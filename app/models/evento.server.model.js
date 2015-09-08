@@ -16,9 +16,18 @@ var EventoSchema = new Schema({
 		required: 'Please fill Evento name',
 		trim: true
 	},
+	place: {
+		type: String,
+		default: '',
+		required: 'Please fill Evento place',
+		trim: true
+	},
 	created: {
 		type: Date,
 		default: Date.now
+	},
+	date: {
+		type: Date
 	},
 	user: {
 		type: Schema.ObjectId,

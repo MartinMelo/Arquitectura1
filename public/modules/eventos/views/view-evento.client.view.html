@@ -2,6 +2,19 @@
 	<div class="page-header">
 		<h1 data-ng-bind="evento.name"></h1>
 	</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{evento.name}}</h3>
+		</div>
+		<div class="panel-body">
+			<div>
+				Lugar: {{evento.place}}
+		    </div>
+			<div>
+				Fecha: <span data-ng-bind="evento.created | date:'mediumDate'"></span>
+			</div>	
+		</div>
+	</div>
 	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == evento.user._id))">
 		<a class="btn btn-primary" href="/#!/eventos/{{evento._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
