@@ -1,4 +1,22 @@
 'use strict';
+
+/**
+ * Cargo el ambiente necesario, por defecto es el de development.
+ * @type {string}
+ */
+process.env.NODE_ENV = 'development';
+process.argv.forEach(function (val, index, array) {
+    if(val === '--production'){
+        process.env.NODE_ENV = 'production';
+    }
+});
+/**
+ * Configurar en caso de error que se cierre para que pm2 la reinicie.
+ */
+process.on('uncaughtException', function (err) {
+    console.log(err);
+    process.exit(1);
+});
 /**
  * Module dependencies.
  */
@@ -33,4 +51,4 @@ app.listen(config.port);
 exports = module.exports = app;
 
 // Logging initialization
-console.log('MEAN.JS application started on port ' + config.port);
+console.log('Party - Event Planner is running at: ' + config.port);
