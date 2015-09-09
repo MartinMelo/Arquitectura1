@@ -3,29 +3,7 @@
 // Eventos controller
 angular.module('eventos').controller('EventosController', ['$scope', '$stateParams', '$location', 'Authentication', 'Eventos',
 	function($scope, $stateParams, $location, Authentication, Eventos) {
-		$scope.authentication = Authentication;
 
-		// Create new Evento
-		$scope.create = function() {
-			// Create new Evento object
-			var evento = new Eventos ({
-				name: this.name,
-				date: this.date,
-				place: this.place
-			});
-
-			// Redirect after save
-			evento.$save(function(response) {
-				$location.path('eventos/' + response._id);
-
-				// Clear form fields
-				$scope.name = '';
-				$scope.date = '';
-				$scope.place = '';
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-		};
 
 		// Remove existing Evento
 		$scope.remove = function(evento) {
