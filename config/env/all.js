@@ -3,10 +3,10 @@
 module.exports = {
 	app: {
 		title: 'Party',
-		description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
-		keywords: 'MongoDB, Express, AngularJS, Node.js'
+		description: 'Event Planner',
+		keywords: ''
 	},
-	port: process.env.PORT || 3000,
+	port: process.env.PORT || 9000,
 	templateEngine: 'swig',
 	sessionSecret: 'MEAN',
 	sessionCollection: 'sessions',
