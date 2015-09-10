@@ -89,36 +89,6 @@
 			// Test scope value
 			expect(scope.evento).toEqualData(sampleEvento);
 		}));
-
-		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Eventos) {
-			// Create a sample Evento object
-			var sampleEventoPostData = new Eventos({
-				name: 'New Evento'
-			});
-
-			// Create a sample Evento response
-			var sampleEventoResponse = new Eventos({
-				_id: '525cf20451979dea2c000001',
-				name: 'New Evento'
-			});
-
-			// Fixture mock form input values
-			scope.name = 'New Evento';
-
-			// Set POST response
-			$httpBackend.expectPOST('eventos', sampleEventoPostData).respond(sampleEventoResponse);
-
-			// Run controller functionality
-			scope.create();
-			$httpBackend.flush();
-
-			// Test form inputs are reset
-			expect(scope.name).toEqual('');
-
-			// Test URL redirection after the Evento was created
-			expect($location.path()).toBe('/eventos/' + sampleEventoResponse._id);
-		}));
-
 		it('$scope.update() should update a valid Evento', inject(function(Eventos) {
 			// Define a sample Evento put data
 			var sampleEventoPutData = new Eventos({
