@@ -3,7 +3,7 @@
         <h1>Eventos del usuario</h1>
     </div>
     <div class="list-group">
-        <a data-ng-repeat="evento in eventos" data-ng-href="#!/eventos/{{evento._id}}" class="list-group-item">
+        <a data-ng-repeat="evento in eventos" data-ng-href="#!/eventos/{{evento.id}}" class="list-group-item">
 			<small class="list-group-item-text">
 				Posted on
 				<span data-ng-bind="evento.created | date:'medium'"></span>

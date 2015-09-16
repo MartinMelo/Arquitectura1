@@ -4,7 +4,7 @@
 angular.module('eventos').controller('EventosController', ['$http', '$scope', '$stateParams', '$location', 'Authentication', 'Eventos',
 	function($http, $scope, $stateParams, $location, Authentication, Eventos) {
 
-
+	
 		// Remove existing Evento
 		$scope.remove = function(evento) {
 			if ( evento ) { 
@@ -43,7 +43,6 @@ angular.module('eventos').controller('EventosController', ['$http', '$scope', '$
 			  }
 			};
 			$http(config).success(function(data) {
-			  console.log(data);
 			  $scope.eventos = data._embedded.event;
 			}).error(function(error) {
 			  return console.log(error);
@@ -52,8 +51,17 @@ angular.module('eventos').controller('EventosController', ['$http', '$scope', '$
 
 		// Find existing Evento
 		$scope.findOne = function() {
-			$scope.evento = Eventos.get({ 
-				eventoId: $stateParams.eventoId
+			var config;
+			config = {
+			  method: 'GET',
+			  url: 'http://localhost:8083/api/v1/event/' + $stateParams.eventoId,
+			  headers: {
+			  }
+			};
+			$http(config).success(function(data) {
+			  $scope.evento = data;
+			}).error(function(error) {
+			  return console.log(error);
 			});
 		};
 	}
