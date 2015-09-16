@@ -1,8 +1,8 @@
 'use strict';
 
 // Eventos controller
-angular.module('eventos').controller('EventosController', ['$scope', '$stateParams', '$location', 'Authentication', 'Eventos',
-	function($scope, $stateParams, $location, Authentication, Eventos) {
+angular.module('eventos').controller('EventosController', ['$http', '$scope', '$stateParams', '$location', 'Authentication', 'Eventos',
+	function($http, $scope, $stateParams, $location, Authentication, Eventos) {
 
 
 		// Remove existing Evento
@@ -35,7 +35,19 @@ angular.module('eventos').controller('EventosController', ['$scope', '$statePara
 
 		// Find a list of Eventos
 		$scope.find = function() {
-			$scope.eventos = Eventos.query();
+			var config;
+			config = {
+			  method: 'GET',
+			  url: 'http://localhost:8083/api/v1/event',
+			  headers: {
+			  }
+			};
+			$http(config).success(function(data) {
+			  console.log(data);
+			  $scope.eventos = data._embedded.event;
+			}).error(function(error) {
+			  return console.log(error);
+			});
 		};
 
 		// Find existing Evento
