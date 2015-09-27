@@ -22,6 +22,14 @@ var EventoSchema = new Schema({
 		required: 'Please fill Evento place',
 		trim: true
 	},
+	description: {
+		type: String,
+		default: ''
+	},
+	requirements: {
+		type: String,
+		default: ''
+	},
 	created: {
 		type: Date,
 		default: Date.now
@@ -32,7 +40,8 @@ var EventoSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
-	}
+	},
+	assistants: [{ type: Schema.Types.ObjectId, ref: 'User' }],
 });
 
 mongoose.model('Evento', EventoSchema);

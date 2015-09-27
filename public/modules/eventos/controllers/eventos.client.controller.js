@@ -3,7 +3,7 @@
 // Eventos controller
 angular.module('eventos').controller('EventosController', ['$scope', '$stateParams', '$location', 'Authentication', 'Eventos',
 	function($scope, $stateParams, $location, Authentication, Eventos) {
-
+		$scope.authentication = Authentication;
 
 		// Remove existing Evento
 		$scope.remove = function(evento) {
@@ -43,6 +43,15 @@ angular.module('eventos').controller('EventosController', ['$scope', '$statePara
 			$scope.evento = Eventos.get({ 
 				eventoId: $stateParams.eventoId
 			});
+			console.log($scope.evento);	
+		};
+		
+		$scope.assist = function() {
+			console.log("asiste");
+		};
+		
+		$scope.no_assist = function() {
+			console.log("no asiste");
 		};
 	}
 ]);

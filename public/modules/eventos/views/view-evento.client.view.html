@@ -1,4 +1,12 @@
 <section data-ng-controller="EventosController" data-ng-init="findOne()">
+	<div class="pull-right">
+		<a class="btn btn-primary" data-ng-click="assist();">
+			<span><i class="glyphicon glyphicon-ok-circle"></i> Asistir</span>
+		</a>
+		<a class="btn btn-primary" data-ng-click="no_assist();">
+			<span><i class="glyphicon glyphicon-remove-circle"></i> No asistir</span>
+		</a>
+	</div>
 	<div class="page-header">
 		<h1 data-ng-bind="evento.name"></h1>
 	</div>
@@ -11,12 +19,12 @@
 				Lugar: {{evento.place}}
 		    </div>
 			<div>
-				Fecha: <span data-ng-bind="evento.created | date:'mediumDate'"></span>
+				Fecha: <span data-ng-bind="evento.date | date:'mediumDate'"></span>
 			</div>	
 		</div>
 	</div>
 	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == evento.user._id))">
-		<a class="btn btn-primary" href="/#!/eventos/{{evento._id}}/edit">
+		<a class="btn btn-primary" href="/#!/eventos/{{evento._id}}/edit" >
 			<i class="glyphicon glyphicon-edit"></i>
 		</a>
 		<a class="btn btn-primary" data-ng-click="remove();">
