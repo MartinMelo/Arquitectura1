@@ -37,9 +37,13 @@ describe('Evento CRUD tests', function() {
 
 		// Save a user to the test db and create new Evento
 		user.save(function() {
-			evento = {
-				name: 'Evento Name'
-			};
+			evento = new Evento({
+				name: 'Evento Name',
+				place: 'Somewhere around the world',
+				description: 'Una Descripcion',
+				assistants: [],
+				user: user
+			});
 
 			done();
 		});
@@ -72,7 +76,7 @@ describe('Evento CRUD tests', function() {
 
 								// Get Eventos list
 								var eventos = eventosGetRes.body;
-
+								console.log(eventos);
 								// Set assertions
 								(eventos[0].user._id).should.equal(userId);
 								(eventos[0].name).should.match('Evento Name');

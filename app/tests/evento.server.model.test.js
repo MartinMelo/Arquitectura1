@@ -30,6 +30,9 @@ describe('Evento Model Unit Tests:', function() {
 		user.save(function() { 
 			evento = new Evento({
 				name: 'Evento Name',
+				place: 'Somewhere around the world',
+				description: 'Una Descripcion',
+				assistants: [],
 				user: user
 			});
 

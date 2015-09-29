@@ -8,6 +8,7 @@
 			scope,
 			$httpBackend,
 			$stateParams,
+			$stateParams,
 			$location;
 
 		// The $resource service augments the response object with methods for updating and deleting the resource.
