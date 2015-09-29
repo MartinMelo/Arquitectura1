@@ -41,7 +41,7 @@ var EventoSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'User'
 	},
-	assistants: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+	assistants: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 });
 
 mongoose.model('Evento', EventoSchema);

@@ -73,7 +73,7 @@ exports.delete = function(req, res) {
  * List of Eventos
  */
 exports.list = function(req, res) { 
-	Evento.find().sort('-created').populate('user', 'displayName').exec(function(err, eventos) {
+	Evento.find().sort('-created').populate('user','displayName').populate('assistants', 'displayName').exec(function(err, eventos) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
@@ -88,7 +88,7 @@ exports.list = function(req, res) {
  * Evento middleware
  */
 exports.eventoByID = function(req, res, next, id) { 
-	Evento.findById(id).populate('user', 'displayName').exec(function(err, evento) {
+	Evento.findById(id).populate('user','displayName').populate('assistants', 'displayName').exec(function(err, evento) {
 		if (err) return next(err);
 		if (! evento) return next(new Error('Failed to load Evento ' + id));
 		req.evento = evento ;

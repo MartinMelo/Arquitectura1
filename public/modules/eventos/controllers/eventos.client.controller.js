@@ -43,15 +43,18 @@ angular.module('eventos').controller('EventosController', ['$scope', '$statePara
 			$scope.evento = Eventos.get({ 
 				eventoId: $stateParams.eventoId
 			});
-			console.log($scope.evento);	
 		};
 		
 		$scope.assist = function() {
-			console.log("asiste");
+			var usuario = $scope.authentication.user._id;
+			$scope.evento.assistants.push(usuario);
+			$scope.update();
 		};
 		
 		$scope.no_assist = function() {
-			console.log("no asiste");
+            var usuario = $scope.authentication.user._id;
+            $scope.evento.assistants.remove(usuario);
+            $scope.update();
 		};
 	}
 ]);
