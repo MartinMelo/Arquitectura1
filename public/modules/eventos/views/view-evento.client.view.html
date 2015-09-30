@@ -31,6 +31,20 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
+<br><br>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">Asistentes</h3>
+		</div>
+		<div class="panel-body">
+			<div class="list-group" ng-repeat="assistant in evento.assistants">
+			  <button type="button" class="list-group-item">{{assistant.displayName}}</button>
+			</div>
+			<div ng-show="evento.assistants.length == 0">
+				<span><i class="glyphicon glyphicon-remove-circle"></i> No hay asistentes aún</span>
+			</div>
+		</div>
+	</div>
 	<small>
 		<em class="text-muted">
 			Posted on
