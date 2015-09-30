@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('eventos').controller('CrearEventoController', ['$scope', 'Authentication', 'Eventos',
-	function($scope, Authentication, Eventos) {
+angular.module('eventos').controller('CrearEventoController', ['$scope', '$location', 'Authentication', 'Eventos',
+	function($scope, $location, Authentication, Eventos) {
 		$scope.authentication = Authentication;
 		
 		// Create new Evento

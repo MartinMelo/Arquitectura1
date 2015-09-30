@@ -1,9 +1,9 @@
 <section data-ng-controller="EventosController" data-ng-init="findOne()">
 	<div class="pull-right">
-		<a class="btn btn-primary" data-ng-click="assist();">
+		<a class="btn btn-primary" data-ng-click="assist();" ng-show="!is_assistant">
 			<span><i class="glyphicon glyphicon-ok-circle"></i> Asistir</span>
 		</a>
-		<a class="btn btn-primary" data-ng-click="no_assist();">
+		<a class="btn btn-primary" data-ng-click="no_assist();" ng-show="is_assistant">
 			<span><i class="glyphicon glyphicon-remove-circle"></i> No asistir</span>
 		</a>
 	</div>
