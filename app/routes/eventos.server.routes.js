@@ -13,6 +13,9 @@ module.exports = function(app) {
 		.get(eventos.read)
 		.put(users.requiresLogin, eventos.hasAuthorization, eventos.update)
 		.delete(users.requiresLogin, eventos.hasAuthorization, eventos.delete);
+		
+	app.route('/eventos/:eventoId/assistants')
+		.get(eventos.read);
 
 	// Finish by binding the Evento middleware
 	app.param('eventoId', eventos.eventoByID);

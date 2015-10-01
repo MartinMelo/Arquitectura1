@@ -5,6 +5,14 @@ angular.module('eventos').controller('EventosController', ['$http', '$scope', '$
 	function($http, $scope, $stateParams, $location, Authentication, Eventos) {
 		$scope.authentication = Authentication;
 		
+		$scope.assistants = function(){
+			$location.path('eventos/' + $scope.evento._id + '/assistants');
+		};
+		
+		$scope.go_to_event = function(){
+			$location.path('eventos/' + $scope.evento._id);
+		};
+		
 		// Remove existing Evento
 		$scope.remove = function(evento) {
 			if ( evento ) { 
