@@ -26,6 +26,10 @@ var EventoSchema = new Schema({
 		type: String,
 		default: ''
 	},
+	image: {
+		type: String,
+		default: ''
+	},
 	requirements: {
 		type: String,
 		default: ''

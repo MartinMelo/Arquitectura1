@@ -10,7 +10,8 @@ angular.module('eventos').controller('CrearEventoController', ['$scope', '$locat
 			var evento = new Eventos ({
 				name: this.name,
 				date: this.date,
-				place: this.place
+				place: this.place,
+				image: this.image
 			});
 
 			// Redirect after save
