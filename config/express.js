@@ -68,13 +68,15 @@ module.exports = function(db) {
 	if (process.env.NODE_ENV === 'development') {
 		// Enable logger (morgan)
 		app.use(morgan('dev'));
-
+		
+		var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'});
+		app.use(morgan('combined', {stream: accessLogStream}));
 		// Disable views cache
 		app.set('view cache', false);
 	} else if (process.env.NODE_ENV === 'production') {
 		app.locals.cache = 'memory';
 	}
-
+	
 	// Request body parsing middleware should be above methodOverride
 	app.use(bodyParser.urlencoded({
 		extended: true

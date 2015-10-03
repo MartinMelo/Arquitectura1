@@ -2,6 +2,9 @@
 
 module.exports = {
 	db: 'mongodb://localhost/party-dev',
+	logging: {
+		format: 'tiny'	
+	},
 	app: {
 		title: 'Party - Development Environment'
 	},
