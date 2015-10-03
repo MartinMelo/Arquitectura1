@@ -9,3 +9,4 @@ app/tests/coverage/
 .idea/
 .project
 config/access.log
+log

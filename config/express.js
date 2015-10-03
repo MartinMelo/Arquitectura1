@@ -21,11 +21,26 @@ var fs = require('fs'),
 	flash = require('connect-flash'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
-	path = require('path');
+	path = require('path'),
+	FileStreamRotator = require('file-stream-rotator');
 
 module.exports = function(db) {
 	// Initialize express app
 	var app = express();
+	var logDirectory = __dirname + '/log';
+	
+	// ensure log directory exists
+	fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+	
+	// create a rotating write stream
+	var accessLogStream = FileStreamRotator.getStream({
+	  filename: logDirectory + '/access-%DATE%.log',
+	  frequency: 'daily',
+	  verbose: false
+	});
+	
+	// setup the logger
+	app.use(morgan('combined', {stream: accessLogStream}));
 
 	// Globbing model files
 	config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
@@ -69,10 +84,8 @@ module.exports = function(db) {
 		// Enable logger (morgan)
 		app.use(morgan('dev'));
 		
-		var accessLogStream = fs.createWriteStream(__dirname + '/access.log', {flags: 'a'});
-		app.use(morgan('combined', {stream: accessLogStream}));
 		// Disable views cache
-		app.set('view cache', false);
+		//app.set('view cache', false);
 	} else if (process.env.NODE_ENV === 'production') {
 		app.locals.cache = 'memory';
 	}
