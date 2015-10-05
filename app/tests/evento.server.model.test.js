@@ -32,6 +32,7 @@ describe('Evento Model Unit Tests:', function() {
 				name: 'Evento Name',
 				place: 'Somewhere around the world',
 				description: 'Una Descripcion',
+				tipo: 'privado',
 				assistants: [],
 				user: user
 			});

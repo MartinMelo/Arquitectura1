@@ -46,6 +46,12 @@ angular.module('eventos').controller('EventosController', ['$http', '$scope', '$
 		$scope.find = function() {
 			$scope.eventos = Eventos.query();
 		};
+		// Obtiene la lista de eventos publicos
+		$scope.eventosPublicos = function() {
+			$http.get('/eventos/publicos').success(function(data){
+				$scope.eventosPublicos = data;
+			});
+		};
 
 		// Find existing Evento
 		$scope.findOne = function() {

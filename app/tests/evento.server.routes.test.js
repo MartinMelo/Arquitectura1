@@ -41,6 +41,7 @@ describe('Evento CRUD tests', function() {
 				name: 'Evento Name',
 				place: 'Somewhere around the world',
 				description: 'Una Descripcion',
+				tipo: 'privado',
 				assistants: [],
 				user: user
 			});

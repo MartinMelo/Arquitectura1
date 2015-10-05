@@ -17,6 +17,9 @@ module.exports = function(app) {
 	app.route('/eventos/:eventoId/assistants')
 		.get(eventos.read);
 
+	app.route('/eventos/publicos')
+		.get(eventos.eventosPublicos);
+
 	// Finish by binding the Evento middleware
 	app.param('eventoId', eventos.eventoByID);
 };

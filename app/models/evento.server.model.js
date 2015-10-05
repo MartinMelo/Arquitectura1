@@ -22,6 +22,11 @@ var EventoSchema = new Schema({
 		required: 'Please fill Evento place',
 		trim: true
 	},
+	tipo: {
+		type: String,
+		default: 'privado',
+		required: 'Please fill Evento place'
+	},
 	description: {
 		type: String,
 		default: ''
