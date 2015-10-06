@@ -3,7 +3,8 @@
 /**
  * Module dependencies.
  */
-var fs = require('fs'),
+var newrelic = require('newrelic'),
+	fs = require('fs'),
 	http = require('http'),
 	https = require('https'),
 	express = require('express'),
@@ -22,8 +23,7 @@ var fs = require('fs'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
 	path = require('path'),
-	FileStreamRotator = require('file-stream-rotator'),
-	newrelic = require('newrelic');
+	FileStreamRotator = require('file-stream-rotator');
 
 module.exports = function(db) {
 	// Initialize express app
