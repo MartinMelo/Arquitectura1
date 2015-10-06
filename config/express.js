@@ -22,7 +22,8 @@ var fs = require('fs'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
 	path = require('path'),
-	FileStreamRotator = require('file-stream-rotator');
+	FileStreamRotator = require('file-stream-rotator'),
+	newrelic = require('newrelic');
 
 module.exports = function(db) {
 	// Initialize express app
