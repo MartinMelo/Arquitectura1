@@ -1,0 +1,4 @@
+loadtest module
+
+$ loadtest -c 10 --rps 200 http://party-unq.ddns.net:9000/  // agregar tarea en grunt para realizar esta tarea
+
