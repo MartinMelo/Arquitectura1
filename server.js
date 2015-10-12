@@ -52,3 +52,4 @@ exports = module.exports = app;
 
 // Logging initialization
 console.log('Party - Event Planner is running at: ' + config.port);
+console.log('Using Enviroment: ' + process.env.NODE_ENV);
