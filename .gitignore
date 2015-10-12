@@ -10,3 +10,4 @@ app/tests/coverage/
 .project
 config/access.log
 log
+.log
