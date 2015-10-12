@@ -10,7 +10,13 @@ services:
   - mongodb
 deploy:
   provider: heroku
-  api_key: 9a2afc33-705e-4afb-acaf-bb87d7ef0ed3
+  api_key:
+     secure: "kDmZUNHEqUYtJRdcrX2gwNGmiHjvZJr+80coFY9spfgAyV6BfnKWe1ufmqOIO9WfGMSs+/pYWEDd1T5ztPLNAwtw+z59nRB64/J/5ipW05SJ+
+   V3dpau3jnkmCDcN6xxY5BJvZFLEu/EKDHBXbU8r54YIuLxQuk1TDey+nt2aLWtCAjjGJyUW+cS96KmjBF806ksFEZwaJbmdF4bJgN0kCgQbsbtWT72x78msx
+   Xb0B5YMFAkiNRxpUEO6AlzL+3jFTV8WwKSmmrG3VwFORhQO/ZfZJnD4VQxspXoZ51sZINshIy8yWtS4+RquxQW0ac1JIyJlrctu/tS5PAZRXEYLvx3RmaH1q
+   NfGeG328M5+m9E+0ICXR+qAF2+MxjwVQSftZPgOgU+TP6MQm6CoKy1fyIlIaDeiRSelAWv5mVa4HHTCqrz8e1bM0AlD5O3ca/Tg/1QAks4s5ewWvI29m8DHy
+   /NWzPdIyes/0Kzd8v3CXL+ZLgxjjhPhDU1hmJfhjimEwvnmRWyX0e9UgNdyXA0M3eI3SPvT6PvlfhlvE1xMolf3s1QPcDkGu/SNN7kqLHLIo5wSVmmIYryHN
+   gAs+3DX+aclwXzmE3jx591UelKSsgSoWExN50ic5x/roQ/oLKq9qHf9KQKynHMc5Bu+gwRo2L2msN4tisuj/oSQ25fQYV8="
   app: event-planner-unq
   branch: master
   run:
