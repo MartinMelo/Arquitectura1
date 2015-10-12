@@ -8,3 +8,10 @@ env:
   - NODE_ENV=travis
 services:
   - mongodb
+deploy:
+  provider: heroku
+  api_key: 9a2afc33-705e-4afb-acaf-bb87d7ef0ed3
+  app: event-planner-unq
+  branch: master
+  run:
+    - "grunt build"
