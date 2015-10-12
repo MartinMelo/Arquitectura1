@@ -4,7 +4,6 @@
  * Cargo el ambiente necesario, por defecto es el de development.
  * @type {string}
  */
-//process.env.NODE_ENV = 'development';
 process.argv.forEach(function (val, index, array) {
     if(val === '--production'){
         process.env.NODE_ENV = 'production';

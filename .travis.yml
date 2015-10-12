@@ -19,5 +19,6 @@ deploy:
    gAs+3DX+aclwXzmE3jx591UelKSsgSoWExN50ic5x/roQ/oLKq9qHf9KQKynHMc5Bu+gwRo2L2msN4tisuj/oSQ25fQYV8="
   app: event-planner-unq
   branch: master
-  run:
+  script:
+    - "npm install"
     - "grunt build"
