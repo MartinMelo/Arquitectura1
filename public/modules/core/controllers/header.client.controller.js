@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Menus','pascalprecht.translate','$rootScope','$locale',
+angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Menus','$translate','$rootScope','$locale',
 	function($scope, Authentication, Menus,$translate,$rootScope,$locale) {
 		$scope.authentication = Authentication;
 		$scope.isCollapsed = false;
 		$scope.menu = Menus.getMenu('topbar');
-		$translate.useSanitizeValueStrategy('sanitize');
+
 
 
 		$scope.toggleCollapsibleMenu = function() {
