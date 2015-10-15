@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('eventos').controller('ListaDeSubscripcionDeEventosController', ['$scope',
-	function($scope) {
+angular.module('eventos').controller('ListaDeSubscripcionDeEventosController', ['$scope','$http',
+	function($scope,$http) {
 
 
 		// Obtiene la lista de eventos publicos
