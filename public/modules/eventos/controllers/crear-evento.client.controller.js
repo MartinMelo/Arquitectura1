@@ -3,7 +3,9 @@
 angular.module('eventos').controller('CrearEventoController', ['$scope', '$location', 'Authentication', 'Eventos',
 	function($scope, $location, Authentication, Eventos) {
 		$scope.authentication = Authentication;
-		
+		$scope.tipos=['publico', 'privado'];
+		$scope.tipo= $scope.tipos[0];
+
 		// Create new Evento
 		$scope.create = function() {
 			// Create new Evento object
