@@ -86,8 +86,8 @@ exports.list = function(req, res) {
 /**
  * List of Eventos publicos
  */
-exports.eventosPublicos = function(req, res) {
-	Evento.find({tipo: 'publico'}).sort('-created').populate('user','displayName').exec(function(err, eventos) {
+exports.eventosPorTipo = function(req, res, tipo) {
+	Evento.find({tipo: tipo}).sort('-created').populate('user','displayName').exec(function(err, eventos) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)

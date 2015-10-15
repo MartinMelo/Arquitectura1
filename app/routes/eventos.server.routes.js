@@ -17,9 +17,10 @@ module.exports = function(app) {
 	app.route('/eventos/:eventoId/assistants')
 		.get(eventos.read);
 
-	app.route('/eventospublicos')
-		.get(eventos.eventosPublicos);
+	app.route('/eventosPorTipo/:tipo')
+		.get(eventos.read);
 
 	// Finish by binding the Evento middleware
 	app.param('eventoId', eventos.eventoByID);
+	app.param('tipo', eventos.eventosPorTipo);
 };
