@@ -19,10 +19,11 @@ module.exports = function(app) {
 
 	app.route('/eventosPorTipo/:tipo')
 		.get(eventos.read);
-	app.route('/eventosSubscriptos')
-		.get(users.requiresLogin, eventos.hasAuthorization ,eventos.eventosSubscriptos);
+	app.route('/eventosSubscriptos/:idUsuario')
+		.get(users.requiresLogin, eventos.read);
 
 	// Finish by binding the Evento middleware
 	app.param('eventoId', eventos.eventoByID);
 	app.param('tipo', eventos.eventosPorTipo);
+	app.param('idUsuario', eventos.eventosSubscriptos);
 };

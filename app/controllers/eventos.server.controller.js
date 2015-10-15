@@ -100,10 +100,8 @@ exports.eventosPorTipo = function(req, res, tipo) {
 /**
  * List of Eventos publicos
  */
-exports.eventosSubscriptos = function(req, res) {
-	console.log(req);
-	var idUsuario = req.user._id ;
-	Evento.find({ assistants: mongoose.Types.ObjectId(idUsuario) }).sort('-created').populate('user','displayName').exec(function(err, eventos) {
+exports.eventosSubscriptos = function(req, res,id) {
+	Evento.find({ assistants: mongoose.Types.ObjectId(id) }).sort('-created').populate('user','displayName').exec(function(err, eventos) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
