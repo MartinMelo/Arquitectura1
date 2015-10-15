@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Menus','$translate','$rootScope','$locale',
+angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Menus','pascalprecht.translate','$rootScope','$locale',
 	function($scope, Authentication, Menus,$translate,$rootScope,$locale) {
 		$scope.authentication = Authentication;
 		$scope.isCollapsed = false;
