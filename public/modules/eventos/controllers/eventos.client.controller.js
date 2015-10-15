@@ -48,7 +48,7 @@ angular.module('eventos').controller('EventosController', ['$http', '$scope', '$
 		};
 		// Obtiene la lista de eventos publicos
 		$scope.eventosPublicos = function() {
-			$http.get('/eventos/publicos').success(function(data){
+			$http.get('/eventospublicos').success(function(data){
 				$scope.eventosPublicos = data;
 			});
 		};
