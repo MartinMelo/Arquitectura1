@@ -2,7 +2,13 @@
 
 angular.module('eventos').controller('ListaDeSubscripcionDeEventosController', ['$scope',
 	function($scope) {
-		// Lista de subscripcion de eventos controller logic
-		// ...
+
+
+		// Obtiene la lista de eventos publicos
+		$scope.listaDeSubscripciones = function() {
+			$http.get('/eventosSubscriptos').success(function(data){
+				$scope.eventosSubscriptos = data;
+			});
+		};
 	}
 ]);

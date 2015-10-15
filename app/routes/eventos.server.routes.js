@@ -19,6 +19,8 @@ module.exports = function(app) {
 
 	app.route('/eventosPorTipo/:tipo')
 		.get(eventos.read);
+	app.route('/eventosSubscriptos')
+		.get(users.requiresLogin, eventos.hasAuthorization ,eventos.eventosSubscriptos);
 
 	// Finish by binding the Evento middleware
 	app.param('eventoId', eventos.eventoByID);
