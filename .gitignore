@@ -12,3 +12,4 @@ app/tests/coverage/
 config/access.log
 log
 .log
+newrelic_agent.log

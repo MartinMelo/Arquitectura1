@@ -11,7 +11,8 @@ angular.module('eventos').controller('CrearEventoController', ['$scope', '$locat
 				name: this.name,
 				date: this.date,
 				place: this.place,
-				image: this.image
+				image: this.image,
+				tipo: this.tipo
 			});
 
 			// Redirect after save
@@ -22,6 +23,7 @@ angular.module('eventos').controller('CrearEventoController', ['$scope', '$locat
 				$scope.name = '';
 				$scope.date = '';
 				$scope.place = '';
+				$scope.tipo = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
