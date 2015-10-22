@@ -86,7 +86,7 @@ exports.list = function(req, res) {
 /**
  * List of Eventos publicos
  */
-exports.eventosPorTipo = function(req, res, tipo) {
+exports.eventosPorTipo = function(req, res,next, tipo) {
 	Evento.find({tipo: tipo}).sort('-created').populate('user','displayName').exec(function(err, eventos) {
 		if (err) {
 			return res.status(400).send({
@@ -100,8 +100,8 @@ exports.eventosPorTipo = function(req, res, tipo) {
 /**
  * List of Eventos publicos
  */
-exports.eventosSubscriptos = function(req, res,id) {
-	Evento.find({ assistants: mongoose.Types.ObjectId(id) }).sort('-created').populate('user','displayName').exec(function(err, eventos) {
+exports.eventosSubscriptos = function(req, res,next,id) {
+	Evento.find({ assistants:  id }).sort('-created').populate('user','displayName').exec(function(err, eventos) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)

@@ -1,6 +1,6 @@
 <section data-ng-controller="ListaDeSubscripcionDeEventosController" data-ng-init="listaDeSubscripciones()">
-	<div class="page-header">
-		<h1>Subscripciones a eventos</h1>
+	<div class="page-header text-center">
+		<h1 translate="SUBSCRIPCIONES_A_EVENTOS"></h1>
 	</div>
 	<div class="list-group" ng-show="eventosSubscriptos.length > 0">
 		<a data-ng-repeat="evento in eventosSubscriptos" data-ng-href="#!/eventos/{{evento._id}}" class="list-group-item">

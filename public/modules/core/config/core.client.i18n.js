@@ -10,13 +10,19 @@ angular.module('core').config(function($translateProvider) {
         NOMBRE: 'Nombre',
         TIPO: 'Tipo',
         LUGAR: 'Lugar',
-        FECHA: 'Date'
+        FECHA: 'Date',
+        IDIOMA: 'Idioma',
+        EDITAR_PERFIL:'Editar perfil',
+        CAMBIAR_CLAVE:'Cambiar clave'
     }).translations('en', {
         SIGN_UP: 'Sign up',
         SIGN_IN: 'Sign in',
         NOMBRE: 'Name',
         TIPO: 'Type',
         LUGAR: 'Location',
-        FECHA: 'Date'
+        FECHA: 'Date',
+        IDIOMA: 'Language',
+        EDITAR_PERFIL:'Edit profile',
+        CAMBIAR_CLAVE:'Change password'
     });
 });

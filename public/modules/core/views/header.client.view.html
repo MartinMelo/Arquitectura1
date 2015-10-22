@@ -35,82 +35,99 @@
 				<a href="/#!/signin"><span translate="SIGN_IN"></a>
 			</li>
 		</ul>
-		<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-					<span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
-				</a>
-				<ul class="dropdown-menu">
-					<li>
-						<a href="javascript:void(0)" ng-click="changeLanguage('es')">Español</a>
-					</li>
-					<li>
-						<a href="javascript:void(0)" ng-click="changeLanguage('en')">English</a>
-					</li>
-					<li>
-						<a href="/#!/settings/profile">Edit Profile</a>
-					</li>
-					<li>
-						<a href="/#!/settings/accounts">Manage Social Accounts</a>
-					</li>
-					<li data-ng-show="authentication.user.provider === 'local'">
-						<a href="/#!/settings/password">Change Password</a>
-					</li>
-					<li class="divider"></li>
-					<li>
-						<a href="/auth/signout">Signout</a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</nav>
+        <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-user fa-lg"></i>
+                    <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu  multi-level" id="menuHeader">
+                    <li class="divider"></li>
+                    <li class="dropdown-submenu">
+                        <a tabindex="-1" href="#">
+                            <i class="fa fa-language"></i>
+                            <span translate="IDIOMA"></span>
+                        </a>
+                        <ul class="dropdown-menu" id="idiomas">
+                            <li>
+                                <a href="javascript:void(0)" ng-click="changeLanguage('es')">Español</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)" ng-click="changeLanguage('en')">English</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/#!/settings/profile">
+                            <i class="fa fa-pencil-square-o"></i>
+                            <span  translate="EDITAR_PERFIL"></span>
+                        </a>
+                    </li>
+                    <li data-ng-show="authentication.user.provider === 'local'">
+                        <a href="/#!/settings/password">
+                            <i class="fa fa-user-secret"></i>
+                            <span  translate="CAMBIAR_CLAVE"></span>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="/auth/signout">
+                            <i class="fa fa-sign-out"></i>
+                            <span translate="SIGNOUT"></span>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
 </div>
 <style>
-	.dropdown-submenu {
-		position: relative;
-	}
+    .dropdown-submenu {
+        position: relative;
+    }
 
-	.dropdown-submenu>.dropdown-menu {
-		top: 0;
-		right: 100%;
-		margin-top: -6px;
-		margin-left: -1px;
-		-webkit-border-radius: 0 6px 6px 6px;
-		-moz-border-radius: 0 6px 6px;
-		border-radius: 0 6px 6px 6px;
-	}
+    .dropdown-submenu>.dropdown-menu {
+        top: 0;
+        right: 100%;
+        margin-top: -6px;
+        margin-left: -1px;
+        -webkit-border-radius: 0 6px 6px 6px;
+        -moz-border-radius: 0 6px 6px;
+        border-radius: 0 6px 6px 6px;
+    }
 
-	.dropdown-submenu:hover>.dropdown-menu {
-		display: block;
-	}
+    .dropdown-submenu:hover>.dropdown-menu {
+        display: block;
+    }
 
-	.dropdown-submenu>a:after {
-		display: block;
-		content: " ";
-		float: right;
-		width: 0;
-		height: 0;
-		border-color: transparent;
-		border-style: solid;
-		border-width: 5px 0 5px 5px;
-		border-left-color: #ccc;
-		margin-top: 5px;
-		margin-right: -10px;
-	}
+    .dropdown-submenu>a:after {
+        display: block;
+        content: " ";
+        float: right;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        border-width: 5px 0 5px 5px;
+        border-left-color: #ccc;
+        margin-top: 5px;
+        margin-right: -10px;
+    }
 
-	.dropdown-submenu:hover>a:after {
-		border-left-color: #fff;
-	}
+    .dropdown-submenu:hover>a:after {
+        border-left-color: #fff;
+    }
 
-	.dropdown-submenu.pull-left {
-		float: none;
-	}
+    .dropdown-submenu.pull-left {
+        float: none;
+    }
 
-	.dropdown-submenu.pull-left>.dropdown-menu {
-		left: -100%;
-		margin-left: 10px;
-		-webkit-border-radius: 6px 0 6px 6px;
-		-moz-border-radius: 6px 0 6px 6px;
-		border-radius: 6px 0 6px 6px;
-	}
+    .dropdown-submenu.pull-left>.dropdown-menu {
+        left: -100%;
+        margin-left: 10px;
+        -webkit-border-radius: 6px 0 6px 6px;
+        -moz-border-radius: 6px 0 6px 6px;
+        border-radius: 6px 0 6px 6px;
+    }
 </style>

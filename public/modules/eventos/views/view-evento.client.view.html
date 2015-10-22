@@ -20,10 +20,10 @@
 		</div>
 		<div class="panel-body">
 			<div>
-				Lugar: {{evento.place}}
+				{{LUGAR | translate}}: {{evento.place}}
 		    </div>
 			<div>
-				Fecha: <span data-ng-bind="evento.date | date:'mediumDate'"></span>
+				{{FECHA | translate}}: <span data-ng-bind="evento.date | date:'mediumDate'"></span>
 			</div>	
 		</div>
 	</div>

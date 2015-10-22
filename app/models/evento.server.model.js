@@ -13,19 +13,19 @@ var EventoSchema = new Schema({
 	name: {
 		type: String,
 		default: '',
-		required: 'Please fill Evento name',
+		required: 'POR_FAVOR_INGRESE_UN_NOMBRE',
 		trim: true
 	},
 	place: {
 		type: String,
 		default: '',
-		required: 'Please fill Evento place',
+		required: 'POR_FAVOR_INGRESE_UN_LUGAR',
 		trim: true
 	},
 	tipo: {
 		type: String,
 		default: 'privado',
-		required: 'Please fill Evento place'
+		required: 'POR_FAVOR_INGRESE_UN_TIPO'
 	},
 	description: {
 		type: String,
@@ -44,7 +44,8 @@ var EventoSchema = new Schema({
 		default: Date.now
 	},
 	date: {
-		type: Date
+		type: Date,
+        required: 'POR_FAVOR_INGRESE_UNA_FECHA_VALIDA'
 	},
 	user: {
 		type: Schema.ObjectId,
