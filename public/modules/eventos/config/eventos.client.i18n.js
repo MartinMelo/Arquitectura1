@@ -6,9 +6,13 @@
 angular.module('eventos').config(function($translateProvider) {
     $translateProvider.translations('es', {
         PRIVADO: 'Privado',
-        PUBLICO: 'Publico'
+        PUBLICO: 'Publico',
+        NUEVO_EVENTO: 'Nuevo evento',
+        URL_DE_LA_IMAGEN:'Url de la imagen'
     }).translations('en', {
         PRIVADO: 'Private',
-        PUBLICO: 'Public'
+        PUBLICO: 'Public',
+        NUEVO_EVENTO: 'New event',
+        URL_DE_LA_IMAGEN:'Image\'s url'
     });
 });

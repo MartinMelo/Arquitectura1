@@ -1,18 +1,18 @@
-<section data-ng-controller="CrearEventoController">
-    <div class="page-header">
-        <h1>Nuevo Evento</h1>
+<section data-ng-controller="CrearEventoController" class="container">
+    <div class="page-header text-center">
+        <h1 translate="NUEVO_EVENTO"></h1>
     </div>
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="create()" novalidate>
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="name">Nombre</label>
+                    <label class="control-label" for="name" translate="NOMBRE"></label>
                     <div class="controls">
                         <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Nombre" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="tipo">Tipo</label>
+                    <label class="control-label" for="tipo" translate="TIPO"></label>
                     <div class="controls">
                         <select data-ng-model="tipo" id="tipo" class="form-control" placeholder="Tipo"
                             ng-options="tipo for tipo in tipos" ng-init="tipo = tipos[0]"required>
@@ -20,19 +20,19 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="place">Lugar</label>
+                    <label class="control-label" for="place" translate="LUGAR"></label>
                     <div class="controls">
                         <input type="text" data-ng-model="place" id="place" class="form-control" placeholder="Lugar" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="date">Fecha</label>
+                    <label class="control-label" for="date" translate="FECHA"></label>
                     <div class="controls">
                         <input type="date" data-ng-model="date" id="date" class="form-control" placeholder="Fecha" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="date">Imagen</label>
+                    <label class="control-label" for="date" translate="URL_DE_LA_IMAGEN"></label>
                     <div class="controls">
                         <input type="text" data-ng-model="image" id="image" class="form-control" placeholder="Imagen">
                     </div>

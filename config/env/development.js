@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    db: 'mongodb://heroku_kplvh8xh:iti6i0b5k00g443r72qcjt5u49@ds041821.mongolab.com:41821/heroku_kplvh8xh',
+	db: 'mongodb://localhost/party-dev',
 	logging: {
 		format: 'tiny'	
 	},
