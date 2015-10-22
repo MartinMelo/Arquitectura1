@@ -1,8 +1,14 @@
 <section data-ng-controller="HomeController">
     <eventos-publicos></eventos-publicos>
-	<div  ng-show="authentication">
-        <a href="/#!/eventos/create">Crear Evento</a>?
-        <lista-de-subscripcion-de-eventos></lista-de-subscripcion-de-eventos>
-        <eventos-del-usuario></eventos-del-usuario>
+	<div ng-show="authentication">
+		<div class="panel panel-body">
+	        <a href="/#!/eventos/create">
+				<div class="btn btn-info">
+		        	<span>Crear evento</span>
+		        </div>
+	        </a>
+	    </div>    
+	    <lista-de-subscripcion-de-eventos></lista-de-subscripcion-de-eventos>
+	    <eventos-del-usuario></eventos-del-usuario>
     </div>
 </section>

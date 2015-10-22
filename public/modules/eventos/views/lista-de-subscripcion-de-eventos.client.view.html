@@ -2,7 +2,7 @@
 	<div class="page-header">
 		<h1>Subscripciones a eventos</h1>
 	</div>
-	<div class="list-group">
+	<div class="list-group" ng-show="eventosSubscriptos.length > 0">
 		<a data-ng-repeat="evento in eventosSubscriptos" data-ng-href="#!/eventos/{{evento._id}}" class="list-group-item">
 			<small class="list-group-item-text">
 				Posted on
@@ -12,6 +12,9 @@
 			</small>
 			<h4 class="list-group-item-heading" data-ng-bind="evento.name"></h4>
 		</a>
+	</div>
+	<div ng-show="eventosSubscriptos.length == 0 || !eventosSubscriptos.length">
+		<span><i class="fa fa-ban"></i> Aún no estas subscripto a ningún evento</span>
 	</div>
 </section>
 
