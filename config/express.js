@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var newrelic = require('newrelic'),
+	scribe = require('scribe-js')(),
 	fs = require('fs'),
 	http = require('http'),
 	https = require('https'),
@@ -28,20 +29,19 @@ var newrelic = require('newrelic'),
 module.exports = function(db) {
 	// Initialize express app
 	var app = express();
-	var logDirectory = __dirname + '/log';
-	
+	//var logDirectory = __dirname + '/log';
 	// ensure log directory exists
-	fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+	//fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 	
 	// create a rotating write stream
-	var accessLogStream = FileStreamRotator.getStream({
-	  filename: logDirectory + '/access-%DATE%.log',
-	  frequency: 'daily',
-	  verbose: false
-	});
+	//var accessLogStream = FileStreamRotator.getStream({
+	//  filename: logDirectory + '/access-%DATE%.log',
+	//  frequency: 'daily',
+	//  verbose: false
+	//});
 	
 	// setup the logger
-	app.use(morgan('combined', {stream: accessLogStream}));
+	//app.use(morgan('combined', {stream: accessLogStream}));
 
 	// Globbing model files
 	config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
@@ -119,6 +119,9 @@ module.exports = function(db) {
 	// connect flash for flash messages
 	app.use(flash());
 
+	app.use(scribe.express.logger()); //Log each request
+	//Para acceder a los logs de la aplicacion.
+	app.use('/logs', scribe.webPanel());
 	// Use helmet to secure Express headers
 	app.use(helmet.xframe());
 	app.use(helmet.xssFilter());

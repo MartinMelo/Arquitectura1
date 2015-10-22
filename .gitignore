@@ -11,5 +11,6 @@ app/tests/coverage/
 .project
 config/access.log
 log
+/logs
 .log
 newrelic_agent.log
