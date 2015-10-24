@@ -1,5 +1,5 @@
 'use strict';
-
+var newrelic = require('newrelic');
 /**
  * Cargo el ambiente necesario, por defecto es el de development.
  * @type {string}
