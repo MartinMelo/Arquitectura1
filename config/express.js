@@ -23,25 +23,18 @@ var newrelic = require('newrelic'),
 	flash = require('connect-flash'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
-	path = require('path'),
-	FileStreamRotator = require('file-stream-rotator');
+	path = require('path');
+
+
+
+
+
 
 module.exports = function(db) {
 	// Initialize express app
 	var app = express();
-	//var logDirectory = __dirname + '/log';
-	// ensure log directory exists
-	//fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
-	
-	// create a rotating write stream
-	//var accessLogStream = FileStreamRotator.getStream({
-	//  filename: logDirectory + '/access-%DATE%.log',
-	//  frequency: 'daily',
-	//  verbose: false
-	//});
-	
-	// setup the logger
-	//app.use(morgan('combined', {stream: accessLogStream}));
+    var server = require('http').createServer(app);
+    var io = require('socket.io').listen(server);
 
 	// Globbing model files
 	config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
@@ -178,5 +171,5 @@ module.exports = function(db) {
 	}
 
 	// Return Express server instance
-	return app;
+	return server;
 };
