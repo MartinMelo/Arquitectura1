@@ -1,5 +1,6 @@
 'use strict';
 var http = require('http');
+var apiKey = process.env.weatherApiKey;
 exports.from = function(id, publicar) {
         var path = '/forecastrss?w='+id+'&u=c';
         var options = {
