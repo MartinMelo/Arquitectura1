@@ -171,5 +171,6 @@ module.exports = function(db) {
 	}
 
 	// Return Express server instance
-	return server;
+	//return server;
+	return app;
 };
