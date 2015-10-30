@@ -12,9 +12,7 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 		 */
 		var ip= $location.$$host +':'+$location.$$port;
 		$rootScope.socket = io.connect(ip);
-		$rootScope.socket.on('connect',function(){
-			console.log('Conectado');
-		});
+
 		$scope.toggleCollapsibleMenu = function() {
 			$scope.isCollapsed = !$scope.isCollapsed;
 		};

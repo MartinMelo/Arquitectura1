@@ -34,7 +34,7 @@ module.exports = function(db) {
 	// Initialize express app
 	var app = express();
     var server = require('http').createServer(app);
-    var io = require('socket.io').listen(server);
+    server.io = require('socket.io').listen(server);
 
 	// Globbing model files
 	config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {

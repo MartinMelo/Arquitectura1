@@ -22,8 +22,11 @@ process.on('uncaughtException', function (err) {
 var init = require('./config/init')(),
 	config = require('./config/config'),
 	mongoose = require('mongoose'),
-	chalk = require('chalk');
-
+	chalk = require('chalk'),
+    weather = require('./config/weather');
+//build services
+var services ={};
+services.weather = weather;
 /**
  * Main application entry file.
  * Please note that the order of loading is important.
@@ -43,6 +46,7 @@ var app = require('./config/express')(db);
 // Bootstrap passport config
 require('./config/passport')();
 
+var socket = require('./config/socket-io')(app.io, services);
 // Start the app by listening on <port>
 app.listen(config.port);
 
