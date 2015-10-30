@@ -12,6 +12,7 @@
 			</small>
 			<h4 class="list-group-item-heading" data-ng-bind="evento.name"></h4>
 		</a>
+		<rating ng-model="evento.rating" readonly="true" max="5" class="golden aLaIzquierda"></rating>
 	</div>
 	<div ng-show="eventosSubscriptos.length == 0 || !eventosSubscriptos.length">
 		<span><i class="fa fa-ban"></i> Aún no estas subscripto a ningún evento</span>

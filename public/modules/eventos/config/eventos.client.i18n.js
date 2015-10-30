@@ -16,8 +16,9 @@ angular.module('eventos').config(function($translateProvider) {
         POR_FAVOR_INGRESE_UN_LUGAR:'Por favor ingrese un lugar',
         EVENTOS_PUBLICOS_MAS_POPULARES:'Eventos publicos mas populares',
         EVENTOS_DEL_USUARIO:'Eventos del usuario',
-        SUBSCRIPCIONES_A_EVENTOS:'Subscripciones a eventos'
-
+        SUBSCRIPCIONES_A_EVENTOS:'Subscripciones a eventos',
+        RATING: 'Rating',
+        GUARDAR:'Guardar'
     }).translations('en', {
         PRIVADO: 'Private',
         PUBLICO: 'Public',
@@ -30,6 +31,8 @@ angular.module('eventos').config(function($translateProvider) {
         POR_FAVOR_INGRESE_UN_LUGAR:'Please fill select a location',
         EVENTOS_PUBLICOS_MAS_POPULARES:'Most popular events',
         EVENTOS_DEL_USUARIO:'User\'s events',
-        SUBSCRIPCIONES_A_EVENTOS:'Subscriptions to events'
+        SUBSCRIPCIONES_A_EVENTOS:'Subscriptions to events',
+        RATING: 'Rating',
+        GUARDAR:'Save'
     });
 });

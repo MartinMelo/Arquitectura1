@@ -4,7 +4,7 @@
 angular.module('eventos').controller('EventosController', ['$http', '$scope', '$stateParams', '$location', 'Authentication', 'Eventos',
 	function($http, $scope, $stateParams, $location, Authentication, Eventos) {
 		$scope.authentication = Authentication;
-		
+		$scope.noImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png';
 		$scope.assistants = function(){
 			$location.path('eventos/' + $scope.evento._id + '/assistants');
 		};
@@ -53,16 +53,17 @@ angular.module('eventos').controller('EventosController', ['$http', '$scope', '$
 			});
 		};
 
+		$scope.cargarClima = function(){
+			//SOCKET.IO CALL
+
+		};
 		// Find existing Evento
 		$scope.findOne = function() {
-	        $scope.evento = Eventos.get({ 
-				eventoId: $stateParams.eventoId
-			});
-			//tengo que cambiar esto para no traerlo dos veces al mismo evento
 			$http.get('/eventos/' + $stateParams.eventoId).success(function(data){
-	            var evento = data;
-				$scope.is_assistant = is_assistant($scope.authentication.user, evento);
-	        });
+				$scope.evento = data;
+				$scope.is_assistant = is_assistant($scope.authentication.user, $scope.evento);
+				$scope.cargarClima();
+			});
 		};
 		
 		var is_assistant = function(user, evento) {
@@ -79,10 +80,15 @@ angular.module('eventos').controller('EventosController', ['$http', '$scope', '$
 		$scope.assist = function() {
 			var usuario = $scope.authentication.user._id;
 			$scope.evento.assistants.push(usuario);
-			$scope.update();
-			$scope.is_assistant = true;
+			var idUsuario = $scope.authentication.user._id;
+			var idevento = $scope.evento.id ;
+			var url = '/asistir/' + idUsuario + '/' + idevento;
+			console.log(url);
+			$http.get(url).success(function(data){
+				$scope.is_assistant = true;
+			});
+
 		};
-		
 		$scope.no_assist = function() {
             var usuario = $scope.authentication.user._id;
             var index = $scope.evento.assistants.indexOf(usuario);

@@ -87,7 +87,7 @@ exports.list = function(req, res) {
  * List of Eventos publicos
  */
 exports.eventosPorTipo = function(req, res,next, tipo) {
-	Evento.find({tipo: tipo}).sort('-created').populate('user','displayName').exec(function(err, eventos) {
+	Evento.find({tipo: tipo}).sort('-rating').populate('user','displayName').exec(function(err, eventos) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
@@ -121,6 +121,23 @@ exports.eventoByID = function(req, res, next, id) {
 		if (! evento) return next(new Error('Failed to load Evento ' + id));
 		req.evento = evento ;
 		next();
+	});
+};
+exports.asistir = function(req, res, next, datos) {
+	console.log("Datos: " + datos);
+
+	var evento = datos.evento;
+
+	evento = _.extend(evento , req.body);
+
+	evento.save(function(err) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(evento);
+		}
 	});
 };
 

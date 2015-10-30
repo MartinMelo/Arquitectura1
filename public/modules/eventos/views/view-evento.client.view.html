@@ -12,7 +12,7 @@
 	</div>
 	<div class="page-header text-center">
 		<h1 data-ng-bind="evento.name"></h1>
-		<img ng-src="{{evento.image}}" class="mainEventoImage"/>
+		<img ng-src="{{evento.image || noImage}}" class="mainEventoImage"/>
 	</div>
 	<div class="panel panel-info">
 		<div class="panel-heading">
@@ -24,7 +24,14 @@
 		    </div>
 			<div>
 				{{FECHA | translate}}: <span data-ng-bind="evento.date | date:'mediumDate'"></span>
-			</div>	
+			</div>
+			<div>
+				Aca va el mapa del lugar del evento.
+
+			</div>
+			<div>
+				{{RATING | translate}}<rating ng-model="evento.rating" readonly="true" max="5" class="golden"></rating>
+			</div>
 		</div>
 	</div>
 	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == evento.user._id))">
@@ -57,4 +64,5 @@
 			<span data-ng-bind="evento.user.displayName"></span>
 		</em>
 	</small>
+	<div id="clima"></div>
 </section>
