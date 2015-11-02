@@ -1,15 +1,17 @@
 'use strict';
 var http = require('http');
-var apiKey = process.env.weatherApiKey;
-exports.from = function(id, publicar) {
-        var path = '/forecastrss?w='+id+'&u=c';
+var apiKey = process.env.WEATHER_API_KEY;
+exports.from = function(datos, publicar) {
+        var lat = datos.lat;
+        var lon = datos.lon;
+        var path = '/weather?lat='+ lat +'&lon='+ lon  +'&APPID='+apiKey;
         var options = {
-            host: 'weather.yahooapis.com',
+            host: 'api.openweathermap.org',
             port: 80,
             path: path,
             method: 'GET',
             headers: {
-                'Content-Type': 'application/xml'
+                'Content-Type': 'application/json'
             }
         };
         http.get(options, function(res){

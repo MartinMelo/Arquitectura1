@@ -1,5 +1,5 @@
 'use strict';
-var xml2json = require('xml2json');
+
 module.exports = function(io, services) {
     var weather = services.weather;
     io.on('connection', function (socket) {
@@ -11,8 +11,7 @@ module.exports = function(io, services) {
 
     function publishWeather(request){
         var id= request.id;
-        weather.from(id, function(xml){
-            var json = xml2json.toJSON(xml);
+        weather.from(id, function(json){
             io.sockets.emit('weather/'+id,
                 {
                     'topic': 'weather/'+id,

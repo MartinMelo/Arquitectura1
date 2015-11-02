@@ -10,6 +10,7 @@ module.exports = {
 				'public/lib/font-awesome/css/font-awesome.min.css'
 			],
 			js: [
+				'public/lib/lodash/lodash.min.js',
 				'public/lib/angular/angular.min.js',
 				'public/lib/jquery/dist/jquery.min.js',
 				'public/lib/angular-resource/angular-resource.js', 
@@ -21,7 +22,9 @@ module.exports = {
 				'public/lib/angular-ui-utils/ui-utils.min.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js',
 				'public/lib/angular-translate/angular-translate.min.js',
-				'public/lib/socket.io-client/socket.io.js'
+				'public/lib/socket.io-client/socket.io.js',
+				'public/lib/angular-simple-logger/dist/angular-simple-logger.min.js',
+				'public/lib/angular-google-maps/dist/angular-google-maps.min.js'
 			]
 		},
 		css: 'public/dist/application.min.css',

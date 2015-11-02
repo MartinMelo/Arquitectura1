@@ -20,9 +20,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="place" translate="LUGAR"></label>
+                    <label class="control-label" translate="LUGAR"></label>
                     <div class="controls">
-                        <input type="text" data-ng-model="place" id="place" class="form-control" placeholder="{{'LUGAR' | translate}}" required>
+                        <ui-gmap-google-map id="place" center="map.center" zoom="map.zoom" draggable="true" events="map.events">
+                            <ui-gmap-marker ng-repeat="m in map.markers" coords="m.coords" icon="m.icon" idkey="m.id"></ui-gmap-marker>
+                        </ui-gmap-google-map>
                     </div>
                 </div>
                 <div class="form-group">

@@ -17,10 +17,8 @@ var EventoSchema = new Schema({
 		trim: true
 	},
 	place: {
-		type: String,
-		default: '',
-		required: 'POR_FAVOR_INGRESE_UN_LUGAR',
-		trim: true
+		type: Schema.Types.Mixed,
+		required: 'POR_FAVOR_INGRESE_UN_LUGAR'
 	},
 	tipo: {
 		type: String,

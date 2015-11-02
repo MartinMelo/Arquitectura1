@@ -18,6 +18,7 @@ module.exports = {
 				'public/lib/font-awesome/css/font-awesome.css'
 			],
 			js: [
+				'public/lib/lodash/lodash.js',
 				'public/lib/angular/angular.js',
 				'public/lib/jquery/dist/jquery.js',
 				'public/lib/angular-resource/angular-resource.js', 
@@ -29,7 +30,9 @@ module.exports = {
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/angular-translate/angular-translate.js',
-				'public/lib/socket.io-client/socket.io.js'
+				'public/lib/socket.io-client/socket.io.js',
+				'public/lib/angular-simple-logger/dist/angular-simple-logger.js',
+				'public/lib/angular-google-maps/dist/angular-google-maps.js'
 			]
 		},
 		css: [
