@@ -124,7 +124,7 @@ exports.eventoByID = function(req, res, next, id) {
 	});
 };
 exports.asistir = function(req, res, next, datos) {
-	console.log("Datos: " + datos);
+	console.log('Datos: ' + datos);
 
 	var evento = datos.evento;
 

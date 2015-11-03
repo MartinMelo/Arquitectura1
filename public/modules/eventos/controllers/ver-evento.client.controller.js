@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('eventos').controller('VerEventoController', ['$scope','$rootScope','Eventos','$http','$stateParams','Authentication',
-	function($scope,$rootScope,Eventos,$http,$stateParams,Authentication) {
+angular.module('eventos').controller('VerEventoController', ['$scope','$location','$rootScope','Eventos','$http','$stateParams','Authentication',
+	function($scope,$location,$rootScope,Eventos,$http,$stateParams,Authentication) {
         $scope.socket = $rootScope.socket;
         $scope.authentication = Authentication;
         $scope.noImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png';
