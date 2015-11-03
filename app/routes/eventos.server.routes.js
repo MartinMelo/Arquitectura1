@@ -21,9 +21,12 @@ module.exports = function(app) {
 		.get(eventos.read);
 	app.route('/eventosSubscriptos/:idUsuario')
 		.get(users.requiresLogin, eventos.read);
-
+	app.route('/eventos/asistir/:datos')
+		.get(users.requiresLogin, eventos.read);
+	
 	// Finish by binding the Evento middleware
 	app.param('eventoId', eventos.eventoByID);
 	app.param('tipo', eventos.eventosPorTipo);
+	app.param('datos', eventos.asistir);
 	app.param('idUsuario', eventos.eventosSubscriptos);
 };

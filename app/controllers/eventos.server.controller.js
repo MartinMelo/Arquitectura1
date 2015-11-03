@@ -124,21 +124,32 @@ exports.eventoByID = function(req, res, next, id) {
 	});
 };
 exports.asistir = function(req, res, next, datos) {
-	console.log('Datos: ' + datos);
-
-	var evento = datos.evento;
-
-	evento = _.extend(evento , req.body);
-
-	evento.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
+	
+	var params = JSON.parse(datos);
+	
+	Evento.findById(params.evento).exec(function(err, evento) {
+		if (err) return next(err);
+		if (! evento) return next(new Error('Failed to load Evento ' + id));
+		var index = evento.assistants.indexOf(params.usuario);
+		var esAsistente = index >= 0;
+			if(esAsistente){
+				evento.assistants.splice(index, 1);
+			}
+			else{
+			evento.assistants.push(params.usuario);
+			}
+			evento.save(function(err) {
+				if (err) {
+					return res.status(400).send({
+						message: errorHandler.getErrorMessage(err)
+					});
+				} else {
+					next();
+				}
 			});
-		} else {
-			res.jsonp(evento);
-		}
+		
 	});
+	
 };
 
 /**

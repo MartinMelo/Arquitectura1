@@ -32,20 +32,17 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
             var usuario = $scope.authentication.user._id;
             $scope.evento.assistants.push(usuario);
             var idUsuario = $scope.authentication.user._id;
-            var idevento = $scope.evento.id ;
-            var url = '/asistir/' + idUsuario + '/' + idevento;
+            var idevento = $scope.evento._id;
+            var datos = {
+            	usuario: idUsuario,
+            	evento: idevento
+            };
+            var url = '/eventos/asistir/' + JSON.stringify(datos);
             console.log(url);
             $http.get(url).success(function(data){
-                $scope.is_assistant = true;
+                $scope.is_assistant = !$scope.is_assistant;
             });
 
-        };
-        $scope.no_assist = function() {
-            var usuario = $scope.authentication.user._id;
-            var index = $scope.evento.assistants.indexOf(usuario);
-            $scope.evento.assistants.splice(index, 1);
-            $scope.update();
-            $scope.is_assistant = false;
         };
 		$scope.cargarClima = function(){
             var id = $scope.evento.place;
@@ -56,8 +53,8 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
 				topic: 'weather',
 				payload:{id: id}
 			};
-			$rootScope.socket.emit('weather' , mensaje);
-
+			$scope.socket.emit('weather' , mensaje);
+			
 		};
 	}
 ]);
