@@ -45,16 +45,17 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
 
         };
 		$scope.cargarClima = function(){
-            var id = $scope.evento.place;
-			$scope.socket.on('weather/+' +id,function(msg){
-				console.log('Response'+ msg);
+            var id = $scope.evento.place.id;
+            var latitud = $scope.evento.place.coords.latitude;
+            var longitud = $scope.evento.place.coords.longitude;
+			$scope.socket.on('weather/' +id,function(msg){
+				console.log('Response'+ msg.payload);
 			});
 			var mensaje = {
 				topic: 'weather',
-				payload:{id: id}
+				payload:{id: id, lat: latitud, lon: longitud}
 			};
 			$scope.socket.emit('weather' , mensaje);
-			
 		};
 	}
 ]);

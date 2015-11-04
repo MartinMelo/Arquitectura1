@@ -11,7 +11,7 @@ module.exports = function(io, services) {
 
     function publishWeather(request){
         var id= request.id;
-        weather.from(id, function(json){
+        weather.from(request, function(json){
             io.sockets.emit('weather/'+id,
                 {
                     'topic': 'weather/'+id,
