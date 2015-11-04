@@ -34,6 +34,11 @@
 			</div>
 		</div>
 	</div>
+	<div id="mapa">
+		<ui-gmap-google-map id="place" center="evento.map.center" zoom="evento.map.zoom" draggable="true" events="evento.map.events">
+			<ui-gmap-marker ng-repeat="m in evento.map.markers" coords="m.coords" icon="m.icon" idkey="m.id"></ui-gmap-marker>
+		</ui-gmap-google-map>
+	</div>
 	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == evento.user._id))">
 		<a class="btn btn-primary" href="/#!/eventos/{{evento._id}}/edit" >
 			<i class="glyphicon glyphicon-edit"></i>
@@ -43,19 +48,7 @@
 		</a>
 	</div>
 <br><br>
-	<!-- <div class="panel panel-info">
-		<div class="panel-heading">
-			<h3 class="panel-title">Asistentes</h3>
-		</div>
-		<div class="panel-body">
-			<div class="list-group" ng-repeat="assistant in evento.assistants">
-			  <button type="button" class="list-group-item">{{assistant.displayName}}</button>
-			</div>
-			<div ng-show="evento.assistants.length == 0">
-				<span><i class="glyphicon glyphicon-remove-circle"></i> No hay asistentes aún</span>
-			</div>
-		</div>
-	</div> -->
+
 	<small>
 		<em class="text-muted">
 			Posted on
