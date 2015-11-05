@@ -10,10 +10,7 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
             $http.get('/eventos/' + $stateParams.eventoId).success(function(data){
                 $scope.evento = data;
                 $scope.map = {
-                    center: {
-                        latitude: $scope.evento.place.coords.latitude,
-                        longitude: $scope.evento.place.coords.latitude
-                    },
+                    center: $scope.evento.place.coords.latitude,
                     zoom: 6,
                     markers: [$scope.evento.place]
                 };
