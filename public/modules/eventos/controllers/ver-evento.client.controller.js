@@ -9,8 +9,12 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
         $scope.cargarEvento = function() {
             $http.get('/eventos/' + $stateParams.eventoId).success(function(data){
                 $scope.evento = data;
+                $scope.center = {
+                    latitude: $scope.evento.place.coords.latitude,
+                    longitude: $scope.evento.place.coords.longitude
+                };
                 $scope.map = {
-                    center: $scope.evento.place.coords.latitude,
+                    center: $scope.center,
                     zoom: 6,
                     markers: [$scope.evento.place]
                 };
