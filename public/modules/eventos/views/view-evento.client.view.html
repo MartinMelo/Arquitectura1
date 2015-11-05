@@ -20,14 +20,14 @@
 		</div>
 		<div class="panel-body">
 			<div>
-				{{FECHA | translate}}: <span data-ng-bind="evento.date | date:'mediumDate'"></span>
+				<span translate="FECHA"></span>: <span data-ng-bind="evento.date | date:'mediumDate'"></span>
 			</div>
 			<div>
-				Aca va el mapa del lugar del evento.
+				Aca va la descripcion del evento.
 
 			</div>
 			<div>
-				{{RATING | translate}}<rating ng-model="evento.rating" readonly="true" max="5" class="golden"></rating>
+				<span translate="RATING"></span>: <rating ng-model="evento.rating" readonly="true" max="5" class="golden"></rating>
 			</div>
 		</div>
 	</div>
