@@ -9,6 +9,14 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
         $scope.cargarEvento = function() {
             $http.get('/eventos/' + $stateParams.eventoId).success(function(data){
                 $scope.evento = data;
+                $scope.map = {
+                    center: {
+                        latitude: $scope.evento.place.coords.latitude,
+                        longitude: $scope.evento.place.coords.latitude
+                    },
+                    zoom: 6,
+                    markers: [$scope.evento.place]
+                };
                 $scope.is_assistant = is_assistant($scope.authentication.user, $scope.evento);
                 $scope.cargarClima();
             });
