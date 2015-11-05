@@ -15,7 +15,7 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
                 };
                 $scope.map = {
                     center: $scope.center,
-                    zoom: 6,
+                    zoom: 8,
                     markers: [$scope.evento.place]
                 };
                 $scope.is_assistant = is_assistant($scope.authentication.user, $scope.evento);
