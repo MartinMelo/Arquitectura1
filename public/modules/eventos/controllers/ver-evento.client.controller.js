@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('eventos').controller('VerEventoController', ['$scope','$location','$rootScope','Eventos','$http','$stateParams','Authentication',
-	function($scope,$location,$rootScope,Eventos,$http,$stateParams,Authentication) {
+angular.module('eventos').controller('VerEventoController', ['$scope','$location','$rootScope','Eventos','$http','$stateParams','Authentication','$modal',
+	function($scope,$location,$rootScope,Eventos,$http,$stateParams,Authentication,$modal) {
         $scope.socket = $rootScope.socket;
         $scope.authentication = Authentication;
         $scope.noImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png';
@@ -66,5 +66,17 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
 			};
 			$scope.socket.emit('weather' , mensaje);
 		};
+        $scope.abrirModalParaCompartir = function(){
+            var modalInstance = $modal.open({
+                templateUrl: 'modules/eventos/views/modal-compartir.client.view.html',
+                size: 'lg'
+            });
+            modalInstance.result.then(function (result) {
+                console.info('El resultado es: ' + result);
+            }, function () {
+                console.info('Modal dismissed at: ' + new Date());
+            });
+
+        }
 	}
 ]);
