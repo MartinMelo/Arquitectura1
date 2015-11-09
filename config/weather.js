@@ -1,10 +1,11 @@
 'use strict';
 var http = require('http');
 var apiKey = process.env.WEATHER_API_KEY;
+console.log(apiKey);
 exports.from = function(datos, publicar) {
         var lat = datos.lat;
         var lon = datos.lon;
-        var path = '/data/2.5/weather?lat='+ lat +'&lon='+ lon  +'&APPID='+apiKey;
+        var path = '/data/2.5/weather?lat='+ lat +'&lon='+ lon  +'&APPID='+apiKey + '&units=metric';
         var options = {
             host: 'api.openweathermap.org',
             port: 80,

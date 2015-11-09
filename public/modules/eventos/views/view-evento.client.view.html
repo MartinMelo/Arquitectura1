@@ -22,8 +22,11 @@
 			<div>
 				<span translate="FECHA"></span>: <span data-ng-bind="evento.date | date:'mediumDate'"></span>
 			</div>
-			<div>
-				Aca va la descripcion del evento.
+			<div ng-show="evento.description">
+				{{evento.description}}
+			</div>
+			<div ng-show="!evento.description">
+				El evento aún no tiene descripción
 			</div>
 			<div>
 				<span translate="RATING"></span>: <rating ng-model="evento.rating" readonly="true" max="5" class="golden"></rating>
@@ -32,15 +35,30 @@
 				<a class="btn btn-primary" data-ng-click="abrirModalParaCompartir()">
 					<span translate="COMPARTIR_CON"></span>
 				</a>
-				<span translate="COMPARTIR_CON"></span>
 			</div>
 		</div>
 	</div>
-	<div id="mapa">
-		<ui-gmap-google-map id="place" center="map.center" zoom="map.zoom" draggable="true">
-			<ui-gmap-marker ng-repeat="m in map.markers" coords="m.coords" icon="m.icon" idkey="m.id"></ui-gmap-marker>
-		</ui-gmap-google-map>
-	</div>
+	<div class="row">
+		<div class="col-md-8" id="mapa">
+			<ui-gmap-google-map id="place" center="map.center" zoom="map.zoom" draggable="true">
+				<ui-gmap-marker ng-repeat="m in map.markers" coords="m.coords" icon="m.icon" idkey="m.id"></ui-gmap-marker>
+			</ui-gmap-google-map>
+		</div>
+		<div class="col-md-4" ng-show="clima">
+			<div class="row">
+			  <div >
+			    <div class="thumbnail">
+				  <img style="width:100px; height:100px" ng-src="http://openweathermap.org/img/w/{{clima.weather[0].icon}}.png" >
+			      <div style="text-align:center" class="caption">
+					<div>Temperatura minima: {{clima.main.temp_min}}°</div>
+					<div>Temperatura máxima: {{clima.main.temp_max}}°</div>
+					<div>Húmedad: {{clima.main.humidity}}%</div>
+			      </div>
+			    </div>
+			  </div>
+			</div>	
+		</div>
+	</div>	
 	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == evento.user._id))">
 		<a class="btn btn-primary" href="/#!/eventos/{{evento._id}}/edit" >
 			<i class="glyphicon glyphicon-edit"></i>
@@ -50,7 +68,7 @@
 		</a>
 	</div>
 <br><br>
-
+	
 	<small>
 		<em class="text-muted">
 			Posted on

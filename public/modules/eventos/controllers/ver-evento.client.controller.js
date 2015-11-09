@@ -59,6 +59,8 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
             var longitud = $scope.evento.place.coords.longitude;
 			$scope.socket.on('weather/' +id,function(msg){
 				console.log('Response'+ msg.payload);
+				$scope.clima  = JSON.parse(msg.payload);
+				$scope.$apply();
 			});
 			var mensaje = {
 				topic: 'weather',
@@ -77,6 +79,6 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
                 console.info('Modal dismissed at: ' + new Date());
             });
 
-        }
+        };
 	}
 ]);

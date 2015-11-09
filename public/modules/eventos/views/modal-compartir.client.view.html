@@ -1,6 +1,7 @@
 <section data-ng-controller="ModalCompartirController">
 	Buscar Usuario.
-	<input type="text" ng-model="username"><input type="button" ng-click="buscar()" >
+	<input type="text" ng-model="username">
+	<input type="button" class="btn btn-info" value="Buscar" ng-click="buscar()" >
 	<div id="lista">
 		<li ng-repeat="user in usuarios">
 			{{user.displayName}}
