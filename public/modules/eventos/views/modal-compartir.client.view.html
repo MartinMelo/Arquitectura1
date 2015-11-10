@@ -3,8 +3,8 @@
 	<input type="text" ng-model="username">
 	<input type="button" class="btn btn-info" value="Buscar" ng-click="buscar()" >
 	<div id="lista">
-		<li ng-repeat="user in usuarios">
-			{{user.displayName}}
-		</li>
+		<ul ng-repeat="user in usuarios">
+			<li>{{user.displayName}}</li>
+		</ul>
 	</div>
 </section>

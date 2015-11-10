@@ -18,7 +18,8 @@ angular.module('eventos').config(function($translateProvider) {
         EVENTOS_DEL_USUARIO:'Eventos del usuario',
         SUBSCRIPCIONES_A_EVENTOS:'Subscripciones a eventos',
         RATING: 'Rating',
-        GUARDAR:'Guardar'
+        GUARDAR:'Guardar',
+        COMPARTIR_CON: 'Compartir con'
     }).translations('en', {
         PRIVADO: 'Private',
         PUBLICO: 'Public',
@@ -33,6 +34,7 @@ angular.module('eventos').config(function($translateProvider) {
         EVENTOS_DEL_USUARIO:'User\'s events',
         SUBSCRIPCIONES_A_EVENTOS:'Subscriptions to events',
         RATING: 'Rating',
-        GUARDAR:'Save'
+        GUARDAR:'Save',
+        COMPARTIR_CON: 'Share with'
     });
 });

@@ -1,13 +1,14 @@
 'use strict';
 
-angular.module('eventos').controller('ModalCompartirController', ['$scope','Users',
-	function($scope, Users) {
+angular.module('eventos').controller('ModalCompartirController', ['$scope','$http',
+	function($scope, $http) {
 
 		$scope.buscar = function(){
-			console.log(Users);
-			$scope.usuarios = Users.findOne({
-				username: this.username
-			});
+			var url = '/user/username/' + this.username;
+            $http.get(url).success(function(data){
+                $scope.usuarios = data;
+            });
+
 		};
 	}
 ]);
