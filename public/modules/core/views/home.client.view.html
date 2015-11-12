@@ -10,5 +10,11 @@
 	    </div>    
 	    <lista-de-subscripcion-de-eventos></lista-de-subscripcion-de-eventos>
 	    <eventos-del-usuario></eventos-del-usuario>
+	    <div data-ng-init="invitaciones()">
+	    	{{eventosCompartidos}}
+	    	<div ng-repeat="evento in eventosCompartidos">
+	    		{{evento}}
+	    	</div>
+	    </div>
     </div>
 </section>

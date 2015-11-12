@@ -1,10 +1,13 @@
 <section data-ng-controller="ModalCompartirController">
-	Buscar Usuario.
+	Buscar Usuario
 	<input type="text" ng-model="username">
 	<input type="button" class="btn btn-info" value="Buscar" ng-click="buscar()" >
 	<div id="lista">
 		<ul ng-repeat="user in usuarios">
-			<li>{{user.displayName}}</li>
+			<li>
+				<span>{{user.displayName}}</span>
+				<div class="btn btn-success" ng-click="compartir(user)">Compartir</div>
+			</li>
 		</ul>
 	</div>
 </section>

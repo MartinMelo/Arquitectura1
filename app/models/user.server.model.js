@@ -88,7 +88,8 @@ var UserSchema = new Schema({
 	},
 	resetPasswordExpires: {
 		type: Date
-	}
+	},
+	invitaciones: [{ type: Schema.Types.ObjectId, ref: 'Evento' }]
 });
 
 /**

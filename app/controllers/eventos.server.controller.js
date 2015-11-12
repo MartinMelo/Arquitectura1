@@ -123,6 +123,15 @@ exports.eventoByID = function(req, res, next, id) {
 		next();
 	});
 };
+
+exports.compartir = function(req, res, next, datosACompartir){
+	var params = JSON.parse(datosACompartir);
+	Evento.findById(params.evento).exec(function(err, evento) {
+		if (err) return next(err);
+		if (! evento) return next(new Error('Failed to load Evento ' + id));
+		console.log(evento);			
+};
+
 exports.asistir = function(req, res, next, datos) {
 	
 	var params = JSON.parse(datos);

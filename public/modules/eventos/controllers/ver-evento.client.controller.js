@@ -69,9 +69,10 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
 			$scope.socket.emit('weather' , mensaje);
 		};
         $scope.abrirModalParaCompartir = function(){
+        	$rootScope.evento = $scope.evento;
             var modalInstance = $modal.open({
                 templateUrl: 'modules/eventos/views/modal-compartir.client.view.html',
-                size: 'lg'
+                size: 'lg',
             });
             modalInstance.result.then(function (result) {
                 console.info('El resultado es: ' + result);

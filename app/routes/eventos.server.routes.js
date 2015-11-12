@@ -23,10 +23,13 @@ module.exports = function(app) {
 		.get(users.requiresLogin, eventos.read);
 	app.route('/eventos/asistir/:datos')
 		.get(users.requiresLogin, eventos.read);
+	app.route('/eventos/compartir/:datosACompartir')
+		.get(users.requiresLogin, eventos.read);	
 	
 	// Finish by binding the Evento middleware
 	app.param('eventoId', eventos.eventoByID);
 	app.param('tipo', eventos.eventosPorTipo);
 	app.param('datos', eventos.asistir);
 	app.param('idUsuario', eventos.eventosSubscriptos);
+	app.param('datosACompartir', eventos.compartir);
 };
