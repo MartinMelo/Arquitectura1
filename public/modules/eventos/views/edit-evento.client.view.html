@@ -1,21 +1,21 @@
-<section data-ng-controller="EditarEventoController" class="container">
+<section data-ng-controller="EditarEventoController" class="container" ng-init="cargarEvento()">
     <div class="page-header text-center">
         <h1 translate="NUEVO_EVENTO"></h1>
     </div>
     <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="create()" novalidate>
+        <form class="form-horizontal" data-ng-submit="update()" novalidate>
             <fieldset>
                 <div class="form-group">
                     <label class="control-label" for="name" translate="NOMBRE"></label>
                     <div class="controls">
-                        <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="{{'NOMBRE' | translate}}" required>
+                        <input type="text" data-ng-model="evento.name" id="name" class="form-control" placeholder="{{'NOMBRE' | translate}}" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="tipo" translate="TIPO"></label>
                     <div class="controls">
                         <select data-ng-model="tipo" id="tipo" class="form-control" placeholder="Tipo"
-                                ng-options="tipo for tipo in tipos" ng-init="tipo = tipos[0]"required>
+                                ng-options="tipo for tipo in tipos" required>
                         </select>
                     </div>
                 </div>
@@ -30,17 +30,17 @@
                 <div class="form-group">
                     <label class="control-label" for="date" translate="FECHA"></label>
                     <div class="controls">
-                        <input type="date" data-ng-model="date" id="date" class="form-control" placeholder="{{'FECHA' | translate}}" required>
+                        <input type="date" data-ng-model="evento.date" id="date" class="form-control" placeholder="{{'FECHA' | translate}}" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="image" translate="URL_DE_LA_IMAGEN"></label>
                     <div class="controls">
-                        <input type="text" data-ng-model="image" id="image" class="form-control" placeholder="{{'URL_DE_LA_IMAGEN' | translate}}">
+                        <input type="text" data-ng-model="evento.image" id="image" class="form-control" placeholder="{{'URL_DE_LA_IMAGEN' | translate}}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-default" value="{{'GUARDAR' | translate}}">
+                    <input type="submit" class="btn btn-default" value="{{'EDITAR' | translate}}">
                 </div>
                 <div data-ng-show="error" class="text-danger">
                     <strong>{{error | translate}}</strong>
