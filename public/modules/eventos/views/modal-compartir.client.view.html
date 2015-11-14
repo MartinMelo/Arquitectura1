@@ -3,6 +3,12 @@
 	<input type="text" ng-model="username">
 	<input type="button" class="btn btn-info" value="Buscar" ng-click="buscar()" >
 	<div id="lista">
+		<div style="font-size: 16px; color:red; margin-top: 10px; margin-bottom: 10px" ng-show="error">
+			<span><i class="glyphicon glyphicon-remove-circle"></i> Este usuario ya fue invitado a ese evento</span>
+		</div>
+		<div style="font-size: 16px; color:green; margin-top: 10px; margin-bottom: 10px" ng-show="success">
+			<span><i class="glyphicon glyphicon-remove-circle"></i> El evento ha sido compartido con éxito</span>
+		</div>
 		<ul ng-repeat="user in usuarios">
 			<li>
 				<span>{{user.displayName}}</span>

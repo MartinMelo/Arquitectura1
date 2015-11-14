@@ -10,19 +10,28 @@ angular.module('eventos').controller('ModalCompartirController', ['$scope','$htt
             });
 		};
 		
+		var sacarUsuario = function(user){
+			var index = $scope.usuarios.indexOf(user);
+			$scope.usuarios.splice(index, 1);
+		};
+		
 		$scope.compartir = function(user){
+			$scope.error = false;
+			$scope.success = false;
 			var datos = {
 				usuario: user._id,
 				evento: $rootScope.evento._id
 			};
 			var url = '/eventos/compartir/' + JSON.stringify(datos);
-            console.log(url);
             $http.get(url)
             	.success(function(data){
-	                console.log("lo hizo " + data);
+	                $scope.error = false;
+	                $scope.success = true;
+	                sacarUsuario(user);
 	            })
 	            .error(function(error){
-	            	console.log(error);	
+	            	$scope.error = true;
+	            	sacarUsuario(user);
 	            });
 		};
 	}
