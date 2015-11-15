@@ -87,7 +87,7 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
 				console.log('Response'+ msg.payload);
 				$scope.clima  = JSON.parse(msg.payload);
 				if(!$scope.clima.weather){
-					$scope.clima = undefined					
+					$scope.clima = undefined;					
 				}
 				else{
 					$scope.$apply();
