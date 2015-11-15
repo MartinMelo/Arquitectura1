@@ -12,6 +12,12 @@
 		<a class="btn btn-primary" data-ng-click="cancel_invitation();" ng-show="is_invited">
 			<span><i class="glyphicon glyphicon-remove-circle"></i> Cancelar invitación</span>
 		</a>
+		<a class="btn btn-primary" href="/#!/eventos/{{evento._id}}/edit" >
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
 	</div>
 	<div class="page-header text-center">
 		<h1 data-ng-bind="evento.name"></h1>
@@ -62,14 +68,6 @@
 			</div>	
 		</div>
 	</div>	
-	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == evento.user._id))">
-		<a class="btn btn-primary" href="/#!/eventos/{{evento._id}}/edit" >
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
 <br><br>
 	
 	<small>

@@ -5,6 +5,7 @@ angular.module('eventos').controller('EditarEventoController', ['$http', '$scope
 	function($http, $scope, $stateParams, $location, Authentication, Eventos) {
 		$scope.authentication = Authentication;
         $scope.tipos=['publico', 'privado'];
+        $scope.currentDate = new Date();
 
 		// Update existing Evento
 		$scope.update = function() {

@@ -12,6 +12,7 @@ app.config(function(uiGmapGoogleMapApiProvider) {
 app.controller('CrearEventoController', ['$scope', '$location', 'Authentication', 'Eventos','uiGmapGoogleMapApi',
 	function($scope, $location, Authentication, Eventos,maps) {
 		$scope.authentication = Authentication;
+		$scope.currentDate = new Date();
 		$scope.tipos=['publico', 'privado'];
 		$scope.tipo= $scope.tipos[0];
 		$scope.map = {
