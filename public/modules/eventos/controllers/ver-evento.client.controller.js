@@ -37,7 +37,7 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
             }
             return false;
         };
-
+			
 		var is_invited = function(user, evento) {
             var i, evento_tmp, len;
             for (i = 0, len = user.invitaciones.length; i < len; i++) {
@@ -48,6 +48,18 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
             }
             return false;
         };
+		
+		$scope.cancel_invitation = function(){
+			var datos = {
+            	usuario: $scope.authentication.user._id,
+            	evento: $scope.evento._id
+            };
+			var url = '/eventos/cancelarInvitacion/' + JSON.stringify(datos);
+            console.log(url);
+            $http.get(url).success(function(data){
+				$scope.is_invited = false;
+            });
+		};
 		
         $scope.assist = function() {
             var usuario = $scope.authentication.user._id;

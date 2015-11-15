@@ -152,6 +152,28 @@ exports.compartir = function(req, res, next, datosACompartir){
 	});
 };
 
+exports.cancelarInvitacion = function(req, res, next, datos){
+	var params = JSON.parse(datos);
+	User.findById(params.usuario).exec(function(err, usuario) {
+		if (err) return next(err);
+		if (! usuario) return next(new Error('Failed to load User ' + id));
+		var index = usuario.invitaciones.indexOf(params.evento);
+		var compartido = index >= 0;
+		if(compartido){
+			usuario.invitaciones.splice(index, 1);			
+		}
+		usuario.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				next();
+			}
+		});
+	});
+};
+
 exports.asistir = function(req, res, next, datos) {
 	
 	var params = JSON.parse(datos);
@@ -175,7 +197,6 @@ exports.asistir = function(req, res, next, datos) {
 				}
 			});
 		});
-		
 	}
 	
 	Evento.findById(params.evento).exec(function(err, evento) {

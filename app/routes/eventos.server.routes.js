@@ -24,7 +24,9 @@ module.exports = function(app) {
 	app.route('/eventos/asistir/:datos')
 		.get(users.requiresLogin, eventos.read);
 	app.route('/eventos/compartir/:datosACompartir')
-		.get(users.requiresLogin, eventos.read);	
+		.get(users.requiresLogin, eventos.read);
+	app.route('/eventos/cancelarInvitacion/:datosACancelar')
+		.get(users.requiresLogin, eventos.read);		
 	
 	// Finish by binding the Evento middleware
 	app.param('eventoId', eventos.eventoByID);
@@ -32,4 +34,5 @@ module.exports = function(app) {
 	app.param('datos', eventos.asistir);
 	app.param('idUsuario', eventos.eventosSubscriptos);
 	app.param('datosACompartir', eventos.compartir);
+	app.param('datosACancelar', eventos.cancelarInvitacion);
 };
