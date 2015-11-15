@@ -20,7 +20,8 @@ angular.module('eventos').config(function($translateProvider) {
         RATING: 'Rating',
         GUARDAR:'Guardar',
         COMPARTIR_CON: 'Compartir con',
-        EDITAR: 'Editar'
+        EDITAR: 'Editar',
+        CLIMA_NO_DISPONIBLE: 'El servicio del clima no se encuentra disponible'
     }).translations('en', {
         PRIVADO: 'Private',
         PUBLICO: 'Public',
@@ -37,6 +38,7 @@ angular.module('eventos').config(function($translateProvider) {
         RATING: 'Rating',
         GUARDAR:'Save',
         COMPARTIR_CON: 'Share with',
-        EDITAR: 'Edit'
+        EDITAR: 'Edit',
+        CLIMA_NO_DISPONIBLE: 'The weather service is not available'	
     });
 });

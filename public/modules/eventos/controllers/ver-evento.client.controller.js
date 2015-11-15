@@ -86,7 +86,12 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
 			$scope.socket.on('weather/' +id,function(msg){
 				console.log('Response'+ msg.payload);
 				$scope.clima  = JSON.parse(msg.payload);
-				$scope.$apply();
+				if(!$scope.clima.weather){
+					$scope.clima = undefined					
+				}
+				else{
+					$scope.$apply();
+				}
 			});
 			var mensaje = {
 				topic: 'weather',
@@ -105,7 +110,6 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
             }, function () {
                 console.info('Modal dismissed at: ' + new Date());
             });
-
         };
 	}
 ]);
