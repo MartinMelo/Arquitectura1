@@ -13,7 +13,8 @@ angular.module('core').config(function($translateProvider) {
         FECHA: 'Date',
         IDIOMA: 'Idioma',
         EDITAR_PERFIL:'Editar perfil',
-        CAMBIAR_CLAVE:'Cambiar clave'
+        CAMBIAR_CLAVE:'Cambiar clave',
+        INVITACIONES: 'Invitaciones'
     }).translations('en', {
         SIGN_UP: 'Sign up',
         SIGN_IN: 'Sign in',
@@ -23,6 +24,7 @@ angular.module('core').config(function($translateProvider) {
         FECHA: 'Date',
         IDIOMA: 'Language',
         EDITAR_PERFIL:'Edit profile',
-        CAMBIAR_CLAVE:'Change password'
+        CAMBIAR_CLAVE:'Change password',
+        INVITACIONES: 'Invitations'
     });
 });

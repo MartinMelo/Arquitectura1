@@ -19,6 +19,7 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
                     markers: [$scope.evento.place]
                 };
                 $scope.is_assistant = is_assistant($scope.authentication.user, $scope.evento);
+                $scope.is_invited = is_invited($scope.authentication.user, $scope.evento);
                 $scope.cargarClima();
             });
         };
@@ -37,6 +38,17 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
             return false;
         };
 
+		var is_invited = function(user, evento) {
+            var i, evento_tmp, len;
+            for (i = 0, len = user.invitaciones.length; i < len; i++) {
+                evento_tmp = user.invitaciones[i];
+                if (evento_tmp === evento._id) {
+                    return true;
+                }
+            }
+            return false;
+        };
+		
         $scope.assist = function() {
             var usuario = $scope.authentication.user._id;
             $scope.evento.assistants.push(usuario);
@@ -44,12 +56,14 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
             var idevento = $scope.evento._id;
             var datos = {
             	usuario: idUsuario,
-            	evento: idevento
+            	evento: idevento,
+            	invitado: $scope.is_invited
             };
             var url = '/eventos/asistir/' + JSON.stringify(datos);
             console.log(url);
             $http.get(url).success(function(data){
                 $scope.is_assistant = !$scope.is_assistant;
+                $scope.is_invited = false;
             });
 
         };

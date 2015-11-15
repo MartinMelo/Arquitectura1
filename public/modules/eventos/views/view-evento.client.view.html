@@ -9,6 +9,9 @@
 		<a class="btn btn-primary" data-ng-click="assist();" ng-show="is_assistant">
 			<span><i class="glyphicon glyphicon-remove-circle"></i> No asistir</span>
 		</a>
+		<a class="btn btn-primary" data-ng-click="cancel_invitation();" ng-show="is_invited">
+			<span><i class="glyphicon glyphicon-remove-circle"></i> Cancelar invitación</span>
+		</a>
 	</div>
 	<div class="page-header text-center">
 		<h1 data-ng-bind="evento.name"></h1>
