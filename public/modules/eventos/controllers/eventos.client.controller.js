@@ -6,23 +6,6 @@ angular.module('eventos').controller('EventosController', ['$http', '$scope', '$
 		$scope.authentication = Authentication;
 
 		
-		// Remove existing Evento
-		$scope.remove = function(evento) {
-			if ( evento ) { 
-				evento.$remove();
-
-				for (var i in $scope.eventos) {
-					if ($scope.eventos [i] === evento) {
-						$scope.eventos.splice(i, 1);
-					}
-				}
-			} else {
-				$scope.evento.$remove(function() {
-					$location.path('eventos');
-				});
-			}
-		};
-
 		// Update existing Evento
 		$scope.update = function() {
 			

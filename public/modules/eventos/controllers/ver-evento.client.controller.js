@@ -111,5 +111,21 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
                 console.info('Modal dismissed at: ' + new Date());
             });
         };
+        // Remove existing Evento
+        $scope.remove = function(evento) {
+            if ( evento ) {
+                evento.$remove();
+
+                for (var i in $scope.eventos) {
+                    if ($scope.eventos [i] === evento) {
+                        $scope.eventos.splice(i, 1);
+                    }
+                }
+            } else {
+                $scope.evento.$remove(function() {
+                    $location.path('eventos');
+                });
+            }
+        };
 	}
 ]);
