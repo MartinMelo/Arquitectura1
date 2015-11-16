@@ -3,7 +3,7 @@
         <h1 translate="BUSCAR_EVENTOS"></h1>
     </div>
     <div class="text-center">
-        <input type="text" ng-model="aBuscar" ng-change="buscarEvento()">
+        <input type="text" ng-model="aBuscar" ng-change="buscarEvento()" class="botonBuscarEvento">
     </div>
     <div class="list-group">
         <a data-ng-repeat="evento in eventos" data-ng-href="#!/eventos/{{evento._id}}" class="list-group-item">
