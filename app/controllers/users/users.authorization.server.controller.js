@@ -20,6 +20,20 @@ exports.userByID = function(req, res, next, id) {
 		next();
 	});
 };
+/**
+ * User middleware
+ */
+exports.userByUserName = function(req, res, next, username) {
+    User.find({username: new RegExp(username, 'i')}, 'displayName').exec(function(err, usuarios) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.jsonp(usuarios);
+        }
+    });
+};
 
 /**
  * Require login routing middleware

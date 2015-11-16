@@ -46,7 +46,15 @@ angular.module('eventos').controller('EventosController', ['$http', '$scope', '$
 			});
 		};
 
-
+		//Lista de invitaciones 
+		$scope.invitaciones = function(){
+			console.log($scope.authentication);
+			$http.get('/eventosCompartidos/' + $scope.authentication).success(function(data){
+				console.log(data);
+				$scope.eventosCompartidos = data;
+			});
+		};
+		
 		// Find existing Evento
 		$scope.findOne = function() {
 			$http.get('/eventos/' + $stateParams.eventoId).success(function(data){

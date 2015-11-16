@@ -9,6 +9,15 @@
 		<a class="btn btn-primary" data-ng-click="assist();" ng-show="is_assistant">
 			<span><i class="glyphicon glyphicon-remove-circle"></i> No asistir</span>
 		</a>
+		<a class="btn btn-primary" data-ng-click="cancel_invitation();" ng-show="is_invited">
+			<span><i class="glyphicon glyphicon-remove-circle"></i> Cancelar invitación</span>
+		</a>
+		<a class="btn btn-primary" href="/#!/eventos/{{evento._id}}/edit" >
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
 	</div>
 	<div class="page-header text-center">
 		<h1 data-ng-bind="evento.name"></h1>
@@ -20,35 +29,57 @@
 		</div>
 		<div class="panel-body">
 			<div>
-				{{LUGAR | translate}}: {{evento.place}}
-		    </div>
-			<div>
-				{{FECHA | translate}}: <span data-ng-bind="evento.date | date:'mediumDate'"></span>
+				<span translate="FECHA"></span>: <span data-ng-bind="evento.date | date:'mediumDate'"></span>
+			</div>
+			<div ng-show="evento.description">
+				{{evento.description}}
+			</div>
+			<div ng-show="!evento.description">
+				El evento aún no tiene descripción
 			</div>
 			<div>
-				Aca va el mapa del lugar del evento.
-
+				<span translate="RATING"></span>: <rating ng-model="evento.rating" readonly="true" max="5" class="golden"></rating>
 			</div>
 			<div>
-				{{RATING | translate}}<rating ng-model="evento.rating" readonly="true" max="5" class="golden"></rating>
+				<a class="btn btn-primary" data-ng-click="abrirModalParaCompartir()">
+					<span translate="COMPARTIR_CON"></span>
+				</a>
 			</div>
 		</div>
 	</div>
-	<div id="mapa">
-		<ui-gmap-google-map id="place" center="evento.map.center" zoom="evento.map.zoom" draggable="true" events="evento.map.events">
-			<ui-gmap-marker ng-repeat="m in evento.map.markers" coords="m.coords" icon="m.icon" idkey="m.id"></ui-gmap-marker>
-		</ui-gmap-google-map>
-	</div>
-	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == evento.user._id))">
-		<a class="btn btn-primary" href="/#!/eventos/{{evento._id}}/edit" >
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
+	<div class="row">
+		<div class="col-md-8" id="mapa">
+			<ui-gmap-google-map id="place" center="map.center" zoom="map.zoom" draggable="true">
+				<ui-gmap-marker ng-repeat="m in map.markers" coords="m.coords" icon="m.icon" idkey="m.id"></ui-gmap-marker>
+			</ui-gmap-google-map>
+		</div>
+		<div class="col-md-4" ng-show="clima">
+			<div class="row">
+			  <div >
+			    <div class="thumbnail">
+				  <img style="width:100px; height:100px" ng-src="http://openweathermap.org/img/w/{{clima.weather[0].icon}}.png" >
+			      <div style="text-align:center" class="caption">
+					<div><span translate="TEMPERATURA_MINIMA"></span>: {{clima.main.temp_min}}°</div>
+					<div><span translate="TEMPERATURA_MAXIMA"></span>: {{clima.main.temp_max}}°</div>
+					<div><span translate="HUMEDAD"></span>: {{clima.main.humidity}}%</div>
+			      </div>
+			    </div>
+			  </div>
+			</div>	
+		</div>
+		<div class="col-md-4" ng-show="!clima">
+			<div class="row">
+			  	<div style="font-size: 16px; color:red; margin-top: 10px; margin-bottom: 10px">
+					<span>
+						<i class="glyphicon glyphicon-remove-circle"></i>
+						<span translate="CLIMA_NO_DISPONIBLE"></span>
+					</span>
+				</div>
+			</div>	
+		</div>
+	</div>	
 <br><br>
-
+	
 	<small>
 		<em class="text-muted">
 			Posted on

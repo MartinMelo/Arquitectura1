@@ -1,54 +1,50 @@
-<section data-ng-controller="EventosController" data-ng-init="findOne()">
-    <div class="page-header">
-        <h1>Editar Evento</h1>
+<section data-ng-controller="EditarEventoController" class="container" ng-init="cargarEvento()">
+    <div class="page-header text-center">
+        <h1 translate="NUEVO_EVENTO"></h1>
     </div>
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="update()" novalidate>
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="name">Nombre</label>
+                    <label class="control-label" for="name" translate="NOMBRE"></label>
                     <div class="controls">
-                        <input type="text" data-ng-model="evento.name" id="name" class="form-control" placeholder="evento.name" required>
+                        <input type="text" data-ng-model="evento.name" id="name" class="form-control" placeholder="{{'NOMBRE' | translate}}" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="name">Descripción</label>
+                    <label class="control-label" for="tipo" translate="TIPO"></label>
                     <div class="controls">
-                        <input type="text" data-ng-model="evento.description" id="description" class="form-control" placeholder="evento.description" required>
+                        <select data-ng-model="tipo" id="tipo" class="form-control" placeholder="Tipo"
+                                ng-options="tipo for tipo in tipos" required>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="place">Lugar</label>
+                    <label class="control-label" translate="LUGAR"></label>
                     <div class="controls">
-                        <input type="text" data-ng-model="evento.place" id="place" class="form-control" placeholder="evento.place" required>
+                        <ui-gmap-google-map id="place" center="map.center" zoom="map.zoom" draggable="true" events="map.events">
+                            <ui-gmap-marker ng-repeat="m in map.markers" coords="m.coords" icon="m.icon" idkey="m.id"></ui-gmap-marker>
+                        </ui-gmap-google-map>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="place">Requerimientos</label>
+                    <label class="control-label" for="date" translate="FECHA"></label>
                     <div class="controls">
-                        <textarea 
-                        	type="text" 
-                        	rows="10"
-                        	data-ng-model="evento.requirements" 
-                        	id="place" 
-                        	class="form-control" 
-                        	placeholder="evento.requirements" 
-                        	required>
-                        </textarea>	
+                        <input type="date" data-ng-model="evento.date" id="date" class="form-control" min="{{currentDate | date:'yyyy-MM-dd'}}" placeholder="{{'FECHA' | translate}}" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="date">Fecha</label>
+                    <label class="control-label" for="image" translate="URL_DE_LA_IMAGEN"></label>
                     <div class="controls">
-                        <input type="date" data-ng-model="evento.date" id="date" class="form-control" placeholder="evento.date" required>
+                        <input type="text" data-ng-model="evento.image" id="image" class="form-control" placeholder="{{'URL_DE_LA_IMAGEN' | translate}}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Update" class="btn btn-default">
+                    <input type="submit" class="btn btn-default" value="{{'EDITAR' | translate}}">
                 </div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
+                <div data-ng-show="error" class="text-danger">
+                    <strong>{{error | translate}}</strong>
+                </div>
             </fieldset>
         </form>
     </div>

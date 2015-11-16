@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Evento = mongoose.model('Evento'),
+	User = mongoose.model('User'),
 	_ = require('lodash');
 
 /**
@@ -123,9 +124,80 @@ exports.eventoByID = function(req, res, next, id) {
 		next();
 	});
 };
+
+exports.compartir = function(req, res, next, datosACompartir){
+	var params = JSON.parse(datosACompartir);
+	User.findById(params.usuario).exec(function(err, usuario) {
+		if (err) return next(err);
+		if (! usuario) return next(new Error('Failed to load User ' + id));
+		var index = usuario.invitaciones.indexOf(params.evento);
+		var compartido = index >= 0;
+		if(compartido){
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage('Ya fue invitado a este evento')
+			});
+		}
+		else{
+			usuario.invitaciones.push(params.evento);
+			usuario.save(function(err) {
+				if (err) {
+					return res.status(400).send({
+						message: errorHandler.getErrorMessage(err)
+					});
+				} else {
+					next();
+				}
+			});
+		}
+	});
+};
+
+exports.cancelarInvitacion = function(req, res, next, datos){
+	var params = JSON.parse(datos);
+	User.findById(params.usuario).exec(function(err, usuario) {
+		if (err) return next(err);
+		if (! usuario) return next(new Error('Failed to load User ' + id));
+		var index = usuario.invitaciones.indexOf(params.evento);
+		var compartido = index >= 0;
+		if(compartido){
+			usuario.invitaciones.splice(index, 1);			
+		}
+		usuario.save(function(err) {
+			if (err) {
+				return res.status(400).send({
+					message: errorHandler.getErrorMessage(err)
+				});
+			} else {
+				next();
+			}
+		});
+	});
+};
+
 exports.asistir = function(req, res, next, datos) {
 	
 	var params = JSON.parse(datos);
+	
+	if(params.invitado){
+		User.findById(params.usuario).exec(function(err, usuario) {
+			if (err) return next(err);
+			if (! usuario) return next(new Error('Failed to load User ' + id));
+			var index = usuario.invitaciones.indexOf(params.evento);
+			var compartido = index >= 0;
+			if(compartido){
+				usuario.invitaciones.splice(index, 1);			
+			}
+			usuario.save(function(err) {
+				if (err) {
+					return res.status(400).send({
+						message: errorHandler.getErrorMessage(err)
+					});
+				} else {
+					next();
+				}
+			});
+		});
+	}
 	
 	Evento.findById(params.evento).exec(function(err, evento) {
 		if (err) return next(err);
@@ -147,9 +219,7 @@ exports.asistir = function(req, res, next, datos) {
 					next();
 				}
 			});
-		
 	});
-	
 };
 
 /**
