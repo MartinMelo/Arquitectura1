@@ -173,6 +173,17 @@ exports.cancelarInvitacion = function(req, res, next, datos){
 		});
 	});
 };
+exports.buscarPorNombre = function(req, res, next, nombre){
+	Evento.find({name: new RegExp(nombre, 'i')}, 'name user').populate('user','displayName').exec(function(err, eventos) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(eventos);
+		}
+	});
+};
 
 exports.asistir = function(req, res, next, datos) {
 	

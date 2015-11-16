@@ -14,7 +14,8 @@ angular.module('core').config(function($translateProvider) {
         IDIOMA: 'Idioma',
         EDITAR_PERFIL:'Editar perfil',
         CAMBIAR_CLAVE:'Cambiar clave',
-        INVITACIONES: 'Invitaciones'
+        INVITACIONES: 'Invitaciones',
+        BUSCAR_EVENTOS: 'Buscar eventos'
     }).translations('en', {
         SIGN_UP: 'Sign up',
         SIGN_IN: 'Sign in',
@@ -25,6 +26,7 @@ angular.module('core').config(function($translateProvider) {
         IDIOMA: 'Language',
         EDITAR_PERFIL:'Edit profile',
         CAMBIAR_CLAVE:'Change password',
-        INVITACIONES: 'Invitations'
+        INVITACIONES: 'Invitations',
+        BUSCAR_EVENTOS: 'Search events'
     });
 });
