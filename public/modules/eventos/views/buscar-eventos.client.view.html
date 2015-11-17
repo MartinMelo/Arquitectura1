@@ -1,9 +1,17 @@
 <section>
-    <div class="page-header text-center">
-        <h1 translate="BUSCAR_EVENTOS"></h1>
-    </div>
     <div class="text-center">
-        <input type="text" ng-model="aBuscar" ng-change="buscarEvento()" class="botonBuscarEvento">
+    	<div class="col-md-4">
+	    	<div class="">
+				<a href="/#!/eventos/create">
+				<div class="btn btn-info">
+					<span translate="CREAR_EVENTO"></span>
+				</div> </a>
+			</div>
+    	</div>
+    	<div class="col-md-8">
+    		<span style="font-size: 20px" translate="BUSCAR_EVENTOS"></span>
+	        <input type="text" ng-model="aBuscar" ng-change="buscarEvento()" class="botonBuscarEvento">
+    	</div>
     </div>
     <div class="list-group">
         <a data-ng-repeat="evento in eventos" data-ng-href="#!/eventos/{{evento._id}}" class="list-group-item">
