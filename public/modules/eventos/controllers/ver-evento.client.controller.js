@@ -103,7 +103,7 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
         	$rootScope.evento = $scope.evento;
             var modalInstance = $modal.open({
                 templateUrl: 'modules/eventos/views/modal-compartir.client.view.html',
-                size: 'lg',
+                size: 'lg'
             });
             modalInstance.result.then(function (result) {
                 console.info('El resultado es: ' + result);
@@ -113,19 +113,12 @@ angular.module('eventos').controller('VerEventoController', ['$scope','$location
         };
         // Remove existing Evento
         $scope.remove = function(evento) {
-            if ( evento ) {
-                evento.$remove();
-
-                for (var i in $scope.eventos) {
-                    if ($scope.eventos [i] === evento) {
-                        $scope.eventos.splice(i, 1);
-                    }
-                }
-            } else {
-                $scope.evento.$remove(function() {
-                    $location.path('eventos');
-                });
-            }
+            var evento = $scope.evento;
+            $http.delete('/eventos/' + evento._id,evento).success(function(data){
+                $location.path('home');
+            }).error(function(error){
+                $scope.error = error.data.message;
+            });
         };
 	}
 ]);
