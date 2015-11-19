@@ -47,15 +47,6 @@
           <stringProp name="CookieManager.policy">default</stringProp>
         </CookieManager>
         <hashTree/>
-        <URLRewritingModifier guiclass="URLRewritingModifierGui" testclass="URLRewritingModifier" testname="HTTP URL Re-writing Modifier" enabled="true">
-          <stringProp name="argument_name">SESSION_ID</stringProp>
-          <boolProp name="path_extension">false</boolProp>
-          <boolProp name="path_extension_no_equals">false</boolProp>
-          <boolProp name="path_extension_no_questionmark">false</boolProp>
-          <boolProp name="cache_value">true</boolProp>
-          <boolProp name="encode">false</boolProp>
-        </URLRewritingModifier>
-        <hashTree/>
         <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="Graph Results" enabled="true">
           <boolProp name="ResultCollector.error_logging">false</boolProp>
           <objProp>
@@ -138,7 +129,7 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;name&quot;:&quot;peron&quot;,&quot;date&quot;:&quot;2015-11-25&quot;,&quot;place&quot;:{&quot;id&quot;:1447894193896,&quot;coords&quot;:{&quot;latitude&quot;:-49.71395582628604,&quot;longitude&quot;:-64.599609375}},&quot;image&quot;:&quot;fghjfghj&quot;,&quot;tipo&quot;:&quot;publico&quot;}</stringProp>
+                  <stringProp name="Argument.value">{&quot;name&quot;:&quot;JMeter&quot;,&quot;date&quot;:&quot;2015-11-25&quot;,&quot;place&quot;:{&quot;id&quot;:1447894193896,&quot;coords&quot;:{&quot;latitude&quot;:-49.71395582628604,&quot;longitude&quot;:-64.599609375}},&quot;image&quot;:&quot;fghjfghj&quot;,&quot;tipo&quot;:&quot;publico&quot;}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
