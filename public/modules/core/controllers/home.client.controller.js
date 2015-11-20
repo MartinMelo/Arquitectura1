@@ -9,7 +9,9 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
 
 		$scope.cargarInvitaciones = function(eventoId){
 			var list = Authentication.user.invitaciones;
-			list.push(eventoId);
+            if(eventoId){
+                list.push(eventoId);
+            }
 			$scope.invitaciones = [];
 			var i, item, len;
 			for (i = 0, len = list.length; i < len; i++) {
