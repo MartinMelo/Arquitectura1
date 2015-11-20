@@ -28,6 +28,11 @@ angular.module('eventos').controller('ModalCompartirController', ['$scope','$htt
 	                $scope.error = false;
 	                $scope.success = true;
 	                sacarUsuario(user);
+                    var mensaje = {
+                        topic: 'ActualizarInvitaciones/',
+                        payload:{id: id, lat: latitud, lon: longitud}
+                    };
+                    $scope.socket.emit('ActualizarInvitaciones/'+user._id, mensaje);
 	            })
 	            .error(function(error){
 	            	$scope.error = true;

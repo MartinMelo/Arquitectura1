@@ -1,12 +1,12 @@
 'use strict';
 
 
-angular.module('core').controller('HomeController', ['$scope', '$http', 'Authentication',
-	function($scope, $http, Authentication) {
+angular.module('core').controller('HomeController', ['$scope', '$http', 'Authentication','$rootScope',
+	function($scope, $http, Authentication,$rootScope) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
-		console.log($scope.authentication);
-		
+        $scope.socket = $rootScope.socket;
+
 		$scope.invitaciones = function(data){
 			var list = Authentication.user.invitaciones;
 			$scope.invitaciones = [];
@@ -18,6 +18,9 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
               });
 			}
 		};
-				
+		var namespace = 'ActualizarInvitaciones/'+ $scope.authentication.user._id;
+		$scope.socket.on(namespace,function(msg){
+			$scope.invitaciones();
+		});
 	}
 ]);
