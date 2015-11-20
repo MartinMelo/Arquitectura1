@@ -30,7 +30,7 @@ angular.module('eventos').controller('ModalCompartirController', ['$scope','$htt
 	                sacarUsuario(user);
                     var mensaje = {
                         topic: 'ActualizarInvitaciones/'+user._id,
-                        payload:{}
+                        payload:{eventoId: $rootScope.evento._id}
                     };
                     $scope.socket.emit('ActualizarInvitaciones', mensaje);
 	            })

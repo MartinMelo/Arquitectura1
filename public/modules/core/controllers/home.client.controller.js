@@ -7,8 +7,9 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
 		$scope.authentication = Authentication;
         $scope.socket = $rootScope.socket;
 
-		$scope.cargarInvitaciones = function(data){
+		$scope.cargarInvitaciones = function(eventoId){
 			var list = Authentication.user.invitaciones;
+			list.push(eventoId);
 			$scope.invitaciones = [];
 			var i, item, len;
 			for (i = 0, len = list.length; i < len; i++) {
@@ -20,7 +21,7 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
 		};
 		var namespace = 'ActualizarInvitaciones/'+ $scope.authentication.user._id;
 		$scope.socket.on(namespace,function(msg){
-			$scope.cargarInvitaciones();
+			$scope.cargarInvitaciones(msg.payload.eventoId);
 		});
 	}
 ]);
