@@ -7,6 +7,14 @@ module.exports = function(io, services) {
         socket.on('weather',function(json){
             publishWeather(json.payload);
         });
+        socket.on('ActualizarInvitaciones',function(json){
+            io.sockets.emit(json.topic,
+                {
+                    'topic': json.topic,
+                    'payload': {}
+                }
+            );
+        });
     });
 
     function publishWeather(request){
