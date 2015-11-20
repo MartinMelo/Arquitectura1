@@ -11,7 +11,7 @@ module.exports = function(io, services) {
             io.sockets.emit(json.topic,
                 {
                     'topic': json.topic,
-                    'payload': json
+                    'payload': json.payload
                 }
             );
         });
